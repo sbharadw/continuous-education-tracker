@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const db = require("../models");
+const db = require("../Models");
 
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
     process.env.MONGODB_URI ||
-    "mongodb://localhost/"
+    "mongodb://localhost/"  //will need to be updated with the mongo server name
 );
 
 const userSeed = [
@@ -18,7 +18,7 @@ const userSeed = [
         email: "test@email.com",
         hospital: "Childrens National Hospital",
         unit: "PICU",
-        info: "1"
+        info: "discription here"
     },
     {
         subId: "33333",
@@ -29,7 +29,7 @@ const userSeed = [
         email: "test2@email.com",
         hospital: "Childrens National Hospital",
         unit: "PICU",
-        info: "2"
+        info: "discription here"
     },
     {
         subId: "55555",
@@ -40,13 +40,13 @@ const userSeed = [
         email: "test3@email.com",
         hospital: "Childrens National Hospital",
         unit: "PICU",
-        info: "3"
+        info: "discription here"
     },
 ];
 
 db.User
     .remove({})
-    .then(() => db.User.collection.insertMany(bookSeed))
+    .then(() => db.User.collection.insertMany(userSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);
