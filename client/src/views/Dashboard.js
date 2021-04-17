@@ -27,7 +27,7 @@ function Dashboard() {
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-chart text-warning"></i>
+                      <i className="nc-icon nc-bold text-warning"></i>
                     </div>
                   </Col>
                   <Col xs="7">
@@ -53,7 +53,7 @@ function Dashboard() {
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-light-3 text-success"></i>
+                      <i className="nc-icon nc-ambulance text-success"></i>
                     </div>
                   </Col>
                   <Col xs="7">
@@ -79,12 +79,12 @@ function Dashboard() {
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-vector text-danger"></i>
+                      <i className="nc-icon nc-time-alarm text-danger"></i>
                     </div>
                   </Col>
                   <Col xs="7">
                     <div className="numbers">
-                      <p className="card-category">Latest Session</p>
+                      <p className="card-category">Total Hours Remaining</p>
                       <Card.Title as="h4">23m</Card.Title>
                     </div>
                   </Col>
@@ -105,12 +105,12 @@ function Dashboard() {
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-favourite-28 text-primary"></i>
+                      <i className="nc-icon nc-check-2 text-primary"></i>
                     </div>
                   </Col>
                   <Col xs="7">
                     <div className="numbers">
-                      <p className="card-category">Total Hours</p>
+                      <p className="card-category">Total Hours Completed</p>
                       <Card.Title as="h4">370h</Card.Title>
                     </div>
                   </Col>
