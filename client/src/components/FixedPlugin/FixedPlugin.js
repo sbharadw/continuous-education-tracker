@@ -137,40 +137,6 @@ function FixedPlugin({
             </a>
           </li>
  
-          <li className="button-container">
-            <div>
-              <Button
-                block
-                className="btn-fill"
-                href="http://www.creative-tim.com/product/light-bootstrap-dashboard-react"
-                rel="noopener noreferrer"
-                target="_blank"
-                variant="default"
-              >
-                Checkout docs.
-              </Button>
-            </div>
-          </li>
-          <li className="header-title pro-title text-center">
-            Want more components?
-          </li>
-    
-          <li className="button-container mb-4">
-            <Button
-              className="btn-social btn-outline btn-round sharrre"
-              id="twitter"
-              variant="twitter"
-            >
-              <i className="fab fa-twitter"></i>· 256
-            </Button>
-            <Button
-              className="btn-social btn-outline btn-round sharrre"
-              id="facebook"
-              variant="facebook"
-            >
-              <i className="fab fa-facebook-square"></i>· 426
-            </Button>
-          </li>
         </Dropdown.Menu>
       </Dropdown>
     </div>
