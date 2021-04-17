@@ -31,8 +31,8 @@ function Sidebar({ color, image, routes }) {
               />
             </div>
           </a>
-          <a className="simple-text" href="http://www.creative-tim.com">
-          Continuing Education Hours Tracker
+          <a className="simple-text">
+          Continuing Education Tracker
           </a>
         </div>
         <Nav>
