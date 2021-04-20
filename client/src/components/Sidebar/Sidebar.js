@@ -24,12 +24,7 @@ function Sidebar({ color, image, routes }) {
             href="https://www.creative-tim.com?ref=lbd-sidebar"
             className="simple-text logo-mini mx-1"
           >
-            <div className="logo-img">
-              <img
-                src={require("assets/img/reactlogo.png").default}
-                alt="..."
-              />
-            </div>
+  
           </a>
           <a className="simple-text">
           Continuing Education Tracker

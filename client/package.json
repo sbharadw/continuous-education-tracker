@@ -2,6 +2,7 @@
   "name": "light-bootstrap-dashboard-react",
   "version": "2.0.0",
   "dependencies": {
+    "@auth0/auth0-react": "^1.4.0",
     "@fortawesome/fontawesome-free": "5.15.2",
     "bootstrap": "4.6.0",
     "chartist": "0.10.1",
