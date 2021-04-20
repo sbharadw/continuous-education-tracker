@@ -7,6 +7,7 @@ import Sidebar from "components/Sidebar/Sidebar";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import sidebarImage from "assets/img/sidebar-3.jpg";
 
@@ -15,7 +16,13 @@ function Admin() {
   const [color, setColor] = React.useState("black");
   const [hasImage, setHasImage] = React.useState(true);
   const location = useLocation();
-  const mainPanel = React.useRef(null);
+  const mainPanel = React.useRef();
+
+  const {user, isAuthenticated } = useAuth0();
+
+  console.log(user);    //Userinfo -------------------------------------------
+
+
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
@@ -31,10 +38,11 @@ function Admin() {
       }
     });
   };
+  
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-    mainPanel.current.scrollTop = 0;
+    mainPanel.current = 0;
     if (
       window.innerWidth < 993 &&
       document.documentElement.className.indexOf("nav-open") !== -1
@@ -45,6 +53,8 @@ function Admin() {
     }
   }, [location]);
   return (
+
+    isAuthenticated && (
     <>
       <div className="wrapper">
         <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
@@ -65,6 +75,7 @@ function Admin() {
         setImage={(image) => setImage(image)}
       />
     </>
+    )
   );
 }
 

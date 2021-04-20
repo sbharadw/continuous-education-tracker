@@ -24,12 +24,7 @@ function Sidebar({ color, image, routes }) {
             href="https://github.com/sbharadw/continuous-education-tracker"
             className="simple-text logo-mini mx-1"
           >
-            <div className="logo-img">
-              <img
-                src={require("assets/img/reactlogo.png").default}
-                alt="..."
-              />
-            </div>
+  
           </a>
           <a className="simple-text">
           Continuing Education Tracker
