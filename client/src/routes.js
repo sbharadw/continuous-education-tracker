@@ -8,7 +8,7 @@ const dashboardRoutes = [
     upgrade: true,
     path: "/upgrade",
     name: "ADD HOURS",
-    icon: "nc-icon nc-alien-33",
+    icon: "nc-icon nc-watch-time",
     component: Upgrade,
     layout: "/admin",
   },
