@@ -111,7 +111,7 @@ function Dashboard() {
                   <Col xs="7">
                     <div className="numbers">
                       <p className="card-category">Total Hours Completed</p>
-                      <Card.Title as="h4">370h</Card.Title>
+                      <Card.Title as="h4">270h</Card.Title>
                     </div>
                   </Col>
                 </Row>
@@ -194,7 +194,7 @@ function Dashboard() {
                   <i className="fas fa-circle text-info"></i>
                   Trauuma <i className="fas fa-circle text-danger"></i>
                   Burn <i className="fas fa-circle text-warning"></i>
-                  Total Second Time
+                  
                 </div>
                 <hr></hr>
                 <div className="stats">
@@ -217,17 +217,16 @@ function Dashboard() {
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["40%", "20%", "40%"],
-                      series: [40, 20, 40],
+                      labels: ["80%", "20%"],
+                      series: [80, 20],
                     }}
                     type="Pie"
                   />
                 </div>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  Trauma <i className="fas fa-circle text-danger"></i>
-                  Burn <i className="fas fa-circle text-warning"></i>
-                  OTHER
+                  Complete <i className="fas fa-circle text-danger"></i>
+                  Incomplete
                 </div>
                 <hr></hr>
                 <div className="stats">
