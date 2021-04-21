@@ -16,7 +16,7 @@ findById: function(req, res) {
 create: function(req, res) {
     db.User
         .create(req.body)
-        .then(console.log(`User created ${req.body}`))
+        .then(console.log(`User created ${JSON.stringify(req.body)}`))
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
