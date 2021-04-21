@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import API from "../utils/API";
 
 // react-bootstrap components
 import {
@@ -18,10 +19,47 @@ import {
 
 function User() {
 
+  //User authentification ref and destructure
   const { user } = useAuth0();
-const {picture, email } = user;
+  const {picture, email, sub } = user;
 
-console.log(`${picture} +++++++++++++ ${email}`)
+
+  //------------------------------------------------------start page API scripts----------------------------------------------------------------------------------
+
+  const [formObject, setFormObject] = useState({
+    first_name: "",
+    last_name: "",
+    hospital: "",
+    employee_id: "",
+    unit: ""
+  })
+
+    // Handles updating component state when the user types into the input field
+    function handleInputChange(event) {
+      const { name, value } = event.target;
+      setFormObject({...formObject, [name]: value})
+      console.log(formObject)
+    };
+
+      // When the form is submitted, use the API.saveUser method to save the user data
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (formObject.first_name && formObject.last_name && formObject.hospital && formObject.employee_id && formObject.unit) {
+      
+      API.saveUser({
+        first_name: formObject.first_name,
+        last_name: formObject.last_name,
+        hospital: formObject.hospital,
+        employee_id: formObject.employee_id,
+        unit: formObject.unit,
+        subId: sub,
+        email: email
+      })
+        .then(console.log(formObject))
+        .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
+    }
+  };
+
 
 
   return (
@@ -43,6 +81,9 @@ console.log(`${picture} +++++++++++++ ${email}`)
                         <Form.Control
                           placeholder="Hospital Name"
                           type="text"
+                          onChange={handleInputChange}
+                          value={formObject.hospital}
+                          name="hospital"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -52,7 +93,11 @@ console.log(`${picture} +++++++++++++ ${email}`)
                         <Form.Control
                           placeholder="Unit"
                           as= "select" 
+                          onChange={handleInputChange}
+                          value={formObject.unit}
+                          name="unit"
                         >
+                          <option>Select</option>
                           <option>ED</option>
                           <option>Acute Care</option>
                           <option>PICU</option>
@@ -70,6 +115,7 @@ console.log(`${picture} +++++++++++++ ${email}`)
                           placeholder="Email"
                           type="email"
                           defaultValue={`${email}`}
+                          disabled
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -81,6 +127,9 @@ console.log(`${picture} +++++++++++++ ${email}`)
                         <Form.Control
                           placeholder="First Name"
                           type="text"
+                          onChange={handleInputChange}
+                          value={formObject.first_name}
+                          name="first_name"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -90,6 +139,9 @@ console.log(`${picture} +++++++++++++ ${email}`)
                         <Form.Control
                           placeholder="Last Name"
                           type="text"
+                          onChange={handleInputChange}
+                          value={formObject.last_name}
+                          name="last_name"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -101,6 +153,9 @@ console.log(`${picture} +++++++++++++ ${email}`)
                         <Form.Control
                           placeholder="Employee ID"
                           type="text"
+                          onChange={handleInputChange}
+                          value={formObject.employee_id}
+                          name="employee_id"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -109,6 +164,7 @@ console.log(`${picture} +++++++++++++ ${email}`)
                     className="btn-fill pull-right"
                     type="submit"
                     variant="info"
+                    onClick={handleFormSubmit}
                   >
                     Update Profile
                   </Button>

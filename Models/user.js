@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     },
     role: {
         type: String,
-        required: true,
+        required: false,
     },
     lastname: {
         type: String,
@@ -31,7 +31,7 @@ const UserSchema = new Schema({
     },
     unit: {
         type: String, 
-        required: true, //look into if this should be required
+        required: true, 
     },
     info: [
         {
