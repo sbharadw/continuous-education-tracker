@@ -32,14 +32,8 @@ const App = () => {
     return (
     <>
 
-
-
         <NavBar />
         <AdminLayout />
-        
-        
-
-
 
     </>
 
