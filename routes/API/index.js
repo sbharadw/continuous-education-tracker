@@ -6,7 +6,7 @@ const infoRoutes = require("./info")
 router.use("/users", usersRoutes);
 
 // info routes
-router.use("/info", infoRoutes);
+router.use("/Info", infoRoutes);
 
 
 module.exports = router;

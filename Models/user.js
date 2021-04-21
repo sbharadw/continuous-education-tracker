@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     subId: {
-        type: String, //look into type for this
+        type: String,
         required: true,
     },
     employeeId: {
-        type: String, //look into type for this
+        type: String,
         required: true,
     },
     firstname: {
@@ -22,7 +22,7 @@ const UserSchema = new Schema({
         required: false,
     },
     email: {
-        type: String, //look into type for this 
+        type: String, 
         required: true,
     },
     hospital: {
@@ -36,7 +36,8 @@ const UserSchema = new Schema({
     info: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Info"
+            ref: "Info",
+            require: false
         }
     ]
 });
