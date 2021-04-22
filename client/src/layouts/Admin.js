@@ -20,7 +20,7 @@ function Admin() {
 
   const {user, isAuthenticated } = useAuth0();
 
-  console.log(user);    //Userinfo -------------------------------------------
+  console.log(user);  //Userinfo -------------------------------------------
 
 
   const getRoutes = (routes) => {

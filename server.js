@@ -17,7 +17,11 @@ app.use(routes);
     mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/CETList",
     );
-// mongodb + srv://gabe:12345@cluster0.tgmj8.mongodb.net/reactReadingList?retryWrites=true&w=majority
+    
+    mongoose.connection.on('connected', () =>{
+        console.log("Mongoose is connected")
+      });
+    // mongodb + srv://gabe:12345@cluster0.tgmj8.mongodb.net/reactReadingList?retryWrites=true&w=majority
 // Start the API server
 app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
