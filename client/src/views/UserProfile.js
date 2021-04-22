@@ -24,14 +24,16 @@ function User() {
   const {picture, email, sub } = user;
 
 
-  //------------------------------------------------------start page API scripts----------------------------------------------------------------------------------
+  //---------------------------start page API scripts----------------------------------------------------------------------------------
 
   const [formObject, setFormObject] = useState({
-    first_name: "",
-    last_name: "",
+    firstName: "",
+    lastName: "",
     hospital: "",
-    employee_id: "",
-    unit: ""
+    employeeId: "",
+    unit: "",
+    subId: sub,
+    email: email
   })
 
     // Handles updating component state when the user types into the input field
@@ -44,23 +46,23 @@ function User() {
       // When the form is submitted, use the API.saveUser method to save the user data
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.first_name && formObject.last_name && formObject.hospital && formObject.employee_id && formObject.unit) {
+    if (formObject.firstName && formObject.lastName && formObject.hospital && formObject.employeeId && formObject.unit) {
       
       API.saveUser({
-        first_name: formObject.first_name,
-        last_name: formObject.last_name,
+        firstName: formObject.firstName,
+        lastName: formObject.lastName,
         hospital: formObject.hospital,
-        employee_id: formObject.employee_id,
+        employeeId: formObject.employeeId,
         unit: formObject.unit,
-        subId: sub,
-        email: email
+        subId: formObject.subId,
+        email: formObject.email
       })
-        .then(console.log(formObject))
+        .then(console.log(`sending object: ${formObject}`))
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
   };
 
-
+//---------------------------------End Scripts ---------------------------------------------
 
   return (
 
@@ -128,8 +130,8 @@ function User() {
                           placeholder="First Name"
                           type="text"
                           onChange={handleInputChange}
-                          value={formObject.first_name}
-                          name="first_name"
+                          value={formObject.firstName}
+                          name="firstName"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -140,8 +142,8 @@ function User() {
                           placeholder="Last Name"
                           type="text"
                           onChange={handleInputChange}
-                          value={formObject.last_name}
-                          name="last_name"
+                          value={formObject.lastName}
+                          name="lastName"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -154,8 +156,8 @@ function User() {
                           placeholder="Employee ID"
                           type="text"
                           onChange={handleInputChange}
-                          value={formObject.employee_id}
-                          name="employee_id"
+                          value={formObject.employeeId}
+                          name="employeeId"
                         ></Form.Control>
                       </Form.Group>
                     </Col>

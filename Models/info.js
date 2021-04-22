@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const infoSchema = new Schema({
     courseName: { type: String, required: true },
-    courseHours: { type: Number, // look into type for this
+    courseHours: { type: Number, 
             required: true },
-    totalHours: { type: Number, // look into type for this
+    totalHours: { type: Number,
                 required: true },
-    synopsis: String,  // look into what this means?
+    synopsis: String, 
     type: {
         type: String, 
         required: false,

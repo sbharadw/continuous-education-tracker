@@ -1,44 +1,71 @@
 const mongoose = require("mongoose");
+
+// Mongoose Schema
 const Schema = mongoose.Schema;
+
+// Create new user schema
 const UserSchema = new Schema({
+    day: {
+        type: Date,
+        default: Date.now()
+      },
     subId: {
-        type: String, 
+        type: String,
         required: true,
+        unique: true
     },
     employeeId: {
-        type: String, 
+        type: String,
+        required: true,
+        unique: true
+    },
+    firstName: {
+        type: String,
+        trim : true,
         required: true,
     },
-    firstname: {
+    lastName: {
         type: String,
+        trim : true,
         required: true,
     },
     role: {
         type: String,
-        required: false,
-    },
-    lastname: {
-        type: String,
+        trim : true,
         required: false,
     },
     email: {
         type: String, 
+        trim : true,
         required: true,
+        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
     },
     hospital: {
         type :String,
+        trim : true,
         required: true,
     },
     unit: {
         type: String, 
+        trim : true,
         required: true, 
     },
     info: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Info"
+            ref: "Info",
+            require: false
         }
     ]
-});
+},
+{
+    toObject: {
+    virtuals: true
+    },
+    toJSON: {
+    virtuals: true 
+    }
+  });
+
 const User = mongoose.model("User", UserSchema);
 module.exports = User;
