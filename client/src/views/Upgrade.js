@@ -8,6 +8,7 @@ import {
   Button,
   Card,
   Form,
+  Checkbox,
   Navbar,
   Nav,
   Table,
@@ -29,7 +30,8 @@ function Upgrade() {
     courseHours: "",
     burnHours: "", 
     synopsis: "",
-    subId: sub
+    checkBoxValue: false,
+    subId: sub,
   })
 
     // Handles updating component state when the user types into the input field
@@ -56,6 +58,13 @@ function Upgrade() {
     }
   };
 
+  //Handles checkbox change
+  // function handleCheckboxChange(event) {
+  //   checked = {checked};
+  //     setFormObject({...formObject, checked: !checked})
+  //     console.log(formObject)
+  // this.setState({ checked: event.target.checked })
+  // }
 //---------------------------------End Scripts ---------------------------------------------
 
 
@@ -83,25 +92,27 @@ function Upgrade() {
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="px-1" md="4">
+                    <Col className="pl-1" md="4">
                     <Form.Group>
                         <label>Course hours</label>
                         <Form.Control
                           placeholder="Course Hours"
-                          type="text"
+                          type="number"
                           onChange={handleInputChange}
                           value={formObject.courseHours}
                           name="courseHourse"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="pl-1" md="1">
+                    <Col className="burnHoursCheckbox pr-1" md="1">
                       <Form.Group>
                         <label>Burn hours</label>
                         <Form.Control
                           placeholder="Burn Hours"
                           type="checkbox"
-                          value={formObject.burnHours}
+                          onChange={handleInputChange}
+                          value={formObject.checkBoxValue}
+                          // value={formObject.burnHours===formObject.courseHours}
                         ></Form.Control>
                       </Form.Group>
                     </Col>

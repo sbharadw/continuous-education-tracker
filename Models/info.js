@@ -2,26 +2,22 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const infoSchema = new Schema({
     courseName: { 
-         type: String, 
-         required: true 
+        type: String, 
+        required: true 
     },
     courseHours: { 
         type: Number, 
         required: true 
-        },
-    totalHours: { 
-        type: Number,
-        required: false 
     },
-    burnHours: { 
+    totalHours: {
         type: Number,
-        required: false 
+        required: true 
     },
-    synopsis:  {
+    synopsis: {
         type: String, 
         required: false,
     },
-    date: {
+    date: { 
         type: Date, 
         default: Date.now 
     }
