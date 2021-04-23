@@ -8,8 +8,11 @@ findAll: function(req, res) {
         .catch(err => res.status(422).json(err));
     },
 findById: function(req, res) {
+    console.log('PARAMS *************************')
+    console.log(req.params)
+
     db.User
-        .findById(req.params.employeeId)
+        .findOne({subId: req.params.id}, req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
