@@ -14,6 +14,46 @@ import {
 } from "react-bootstrap";
 
 function Upgrade() {
+
+  //---------------------------start page API scripts----------------------------------------------------------------------------------
+
+  const [formObject, setFormObject] = useState({
+    courseName: "",
+    courseHours: "",
+    burnHours: "", 
+    synopsis: "",
+    subId: sub
+  })
+
+    // Handles updating component state when the user types into the input field
+    function handleInputChange(event) {
+      const { name, value } = event.target;
+      setFormObject({...formObject, [name]: value})
+      console.log(formObject)
+    };
+
+      // When the form is submitted, use the API.saveCourse method to save the course data
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (formObject.courseName && formObject.courseHours && formObject.burnHours && formObject.synopsis) {
+      
+      API.saveCourse({
+        firstName: formObject.firstName,
+        lastName: formObject.lastName,
+        hospital: formObject.hospital,
+        employeeId: formObject.employeeId,
+        unit: formObject.unit,
+        subId: formObject.subId,
+        email: formObject.email
+      })
+        .then(console.log(`sending object: ${formObject}`))
+        .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
+    }
+  };
+
+//---------------------------------End Scripts ---------------------------------------------
+
+
   return (
     <>
       <Container fluid>
