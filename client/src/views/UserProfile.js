@@ -14,6 +14,7 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import { useParams } from "react-router";
 
 
 
@@ -23,8 +24,21 @@ function User() {
   const { user } = useAuth0();
   const {picture, email, sub } = user;
 
-
   //---------------------------start page API scripts----------------------------------------------------------------------------------
+
+
+  const [myUser, setMyUser] = useState({})
+
+  const id = sub
+
+    useEffect(() => {
+      API.getUser(id)
+        .then(res => {
+          console.log(res)
+          setMyUser(res.data);
+        })
+        .catch(err => console.log(err));
+    }, [])
 
   const [formObject, setFormObject] = useState({
     firstName: "",
@@ -49,8 +63,8 @@ function User() {
     if (formObject.firstName && formObject.lastName && formObject.hospital && formObject.employeeId && formObject.unit) {
       
       API.saveUser({
-        firstName: formObject.firstName,
-        lastName: formObject.lastName,
+        firstname: formObject.firstName,
+        lastname: formObject.lastName,
         hospital: formObject.hospital,
         employeeId: formObject.employeeId,
         unit: formObject.unit,
@@ -86,6 +100,7 @@ function User() {
                           onChange={handleInputChange}
                           value={formObject.hospital}
                           name="hospital"
+                          
                         ></Form.Control>
                       </Form.Group>
                     </Col>
