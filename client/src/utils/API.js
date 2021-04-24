@@ -23,6 +23,12 @@ export default {
     saveUser: function(userData) {
         return axios.post("/api/users", userData);
     },
+  // Updates a user
+    updateUser: function(id){
+      console.log("STEP 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+      console.log(id)
+      return axios.put("/api/users/" + id);
+    },
 
     /*------------------ Course hours routes ----------------------------- */
                 //references info model + infoController
