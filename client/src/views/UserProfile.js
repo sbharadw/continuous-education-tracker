@@ -14,8 +14,6 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import { useParams } from "react-router";
-
 
 
 function User() {
@@ -35,7 +33,10 @@ function User() {
       API.getUser(id)
         .then(res => {
           console.log(res)
-          setMyUser(res.data);
+          populateFields(res)
+          handleDisable(res)
+          handleFormUpdate(res)
+          setMyUser(res.data)
         })
         .catch(err => console.log(err));
     }, [])
@@ -50,6 +51,29 @@ function User() {
     email: email
   })
 
+  function populateFields(res){
+    if(res !== null){
+      setFormObject({ hospital: res.data.hospital })
+      setFormObject({ unit: res.data.unit })
+      setFormObject({ firstName: res.data.firstname })
+      setFormObject({ lastName: res.data.lastname })
+      setFormObject({ employeeId: res.data.employeeId })
+      setDisableObject({ created: true })
+  }
+}
+
+  const[disableObject, setDisableObject] = useState({
+    disable: false,
+    created: false
+  })
+
+  const handleDisable = (res) => {
+    if (res !== null){
+      setDisableObject({disable: true})
+    }
+  }
+
+
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
       const { name, value } = event.target;
@@ -60,7 +84,7 @@ function User() {
       // When the form is submitted, use the API.saveUser method to save the user data
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.firstName && formObject.lastName && formObject.hospital && formObject.employeeId && formObject.unit) {
+    if (formObject.firstName && formObject.lastName && formObject.hospital && formObject.employeeId && formObject.unit && disableObject.created === false) {
       
       API.saveUser({
         firstname: formObject.firstName,
@@ -73,8 +97,29 @@ function User() {
       })
         .then(console.log(`sending object: ${formObject}`))
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
+    } else{
+
+      API.updateUser({
+        firstname: formObject.firstName,
+        lastname: formObject.lastName,
+        hospital: formObject.hospital,
+        employeeId: formObject.employeeId,
+        unit: formObject.unit,
+        subId: formObject.subId,
+        email: formObject.email
+      })
+      .then(console.log(`sending updated object: ${formObject}`))
+      .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
   };
+
+    //when the form is submitted, use the API.updateUser method to update the user data
+  function handleFormUpdate(event, res){
+    event.preventDefault();
+    setDisableObject({disable: false})
+    console.log(myUser)
+  }
+
 
 //---------------------------------End Scripts ---------------------------------------------
 
@@ -86,7 +131,7 @@ function User() {
           <Col md="8">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Edit Profile</Card.Title>
+                <Card.Title as="h4">Profile</Card.Title>
               </Card.Header>
               <Card.Body>
                 <Form>
@@ -100,7 +145,7 @@ function User() {
                           onChange={handleInputChange}
                           value={formObject.hospital}
                           name="hospital"
-                          
+                          disabled={ disableObject.disable }
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -113,6 +158,7 @@ function User() {
                           onChange={handleInputChange}
                           value={formObject.unit}
                           name="unit"
+                          disabled={ disableObject.disable }
                         >
                           <option>Select</option>
                           <option>ED</option>
@@ -147,6 +193,7 @@ function User() {
                           onChange={handleInputChange}
                           value={formObject.firstName}
                           name="firstName"
+                          disabled={ disableObject.disable }
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -159,6 +206,7 @@ function User() {
                           onChange={handleInputChange}
                           value={formObject.lastName}
                           name="lastName"
+                          disabled={ disableObject.disable }
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -173,6 +221,7 @@ function User() {
                           onChange={handleInputChange}
                           value={formObject.employeeId}
                           name="employeeId"
+                          disabled={ disableObject.disable }
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -182,8 +231,18 @@ function User() {
                     type="submit"
                     variant="info"
                     onClick={handleFormSubmit}
+                    disabled = {disableObject.disable}
                   >
-                    Update Profile
+                    Submit
+                  </Button>
+                  <Button
+                    className="btn-fill pull-right"
+                    type="submit"
+                    variant="info"
+                    onClick={handleFormUpdate}
+                    disabled = {!disableObject.disable}
+                  >
+                    Update
                   </Button>
                   <div className="clearfix"></div>
                 </Form>
