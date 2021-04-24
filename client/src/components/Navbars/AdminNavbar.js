@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
+// import Charts from "chartScript.js";
+
 
 import routes from "routes.js";
 
@@ -27,9 +29,10 @@ function Header() {
     return "Brand";
   };
   return (
-    <Navbar bg="dark" >
+    <div bg="dark" id ="Charts">
 
-    </Navbar>
+    </div>
+
   );
 }
 
