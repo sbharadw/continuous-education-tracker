@@ -14,6 +14,8 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import { useParams } from "react-router";
+
 
 
 function User() {
@@ -33,7 +35,6 @@ function User() {
       API.getUser(id)
         .then(res => {
           console.log(res)
-          populateFields(res)
           setMyUser(res.data);
         })
         .catch(err => console.log(err));
@@ -48,22 +49,6 @@ function User() {
     subId: sub,
     email: email
   })
-
-  function populateFields(res){
-    if(res !== null){
-      setFormObject({ hospital: res.data.hospital })
-      setFormObject({ unit: res.data.unit })
-      setFormObject({ firstName: res.data.firstname })
-      setFormObject({ lastName: res.data.lastname })
-      setFormObject({ employeeId: res.data.employeeId })
-  }
-
-  if(res !== null){
-    
-  }
-
-}
-
 
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
@@ -90,7 +75,6 @@ function User() {
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
   };
-
 
 //---------------------------------End Scripts ---------------------------------------------
 
