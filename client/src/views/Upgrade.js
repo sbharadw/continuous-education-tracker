@@ -92,18 +92,30 @@ function Upgrade() {
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="pl-1" md="4">
+                    <Col className="pr-1" md="7">
+                      <Form.Group>
+                        <label>Course name</label>
+                        <Form.Control
+                          placeholder="Course Name"
+                          type="text"
+                          onChange={handleInputChange}
+                          value={formObject.courseName}
+                          name="courseName"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    {/* <Col className="pl-1" md="4">
                     <Form.Group>
                         <label>Course hours</label>
                         <Form.Control
                           placeholder="Course Hours"
-                          type="number"
+                          type="text"
                           onChange={handleInputChange}
                           value={formObject.courseHours}
                           name="courseHourse"
                         ></Form.Control>
                       </Form.Group>
-                    </Col>
+                    </Col> */}
                     <Col className="burnHoursCheckbox pr-1" md="1">
                       <Form.Group>
                         <label>Burn hours</label>
