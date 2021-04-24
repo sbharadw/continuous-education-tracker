@@ -30,6 +30,8 @@ function Header() {
   };
   return (
     <div bg="dark" id ="Charts">
+HELLO guys
+this is the place we can fill in 
 
     </div>
 
