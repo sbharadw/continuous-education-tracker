@@ -29,8 +29,12 @@ create: function(req, res) {
         .catch(err => res.status(422).json(err));
     },
 update: function(req, res) {
+
+    console.log('PARAMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+    console.log(req.params)
+
     db.User
-        .findOneAndUpdate({ subId: req.params.employeeId }, req.body)
+        .findOneAndUpdate({ subId: req.params.id }, req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
