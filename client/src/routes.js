@@ -18,6 +18,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-chart-pie-35",
     component: Dashboard,
     layout: "/admin",
+    role: "admin:true",
   },
   {
     path: "/user",
@@ -32,6 +33,8 @@ const dashboardRoutes = [
     icon: "nc-icon nc-notes",
     component: TableList,
     layout: "/admin",
+    role: "admin:true",
+    role2: "educator:true",
   },
 
 ];

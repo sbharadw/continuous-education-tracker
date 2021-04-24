@@ -5,7 +5,7 @@ import AdminNavbar from "components/Navbars/AdminNavbar";
 import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
-
+//import roleTokenCall from "../components/role_permission";
 import routes from "routes.js";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -24,8 +24,9 @@ function Admin() {
 
 
   const getRoutes = (routes) => {
+
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/admin" ) {
         return (
           <Route
             path={prop.layout + prop.path}

@@ -115,7 +115,7 @@ function User() {
 
     //when the form is submitted, use the API.updateUser method to update the user data
   function handleFormUpdate(event, res){
-    event.preventDefault();
+    //event.preventDefault();
     setDisableObject({disable: false})
     console.log(myUser)
   }

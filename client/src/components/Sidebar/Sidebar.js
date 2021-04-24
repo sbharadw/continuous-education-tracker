@@ -1,15 +1,37 @@
 import React, { Component } from "react";
 import { useLocation, NavLink } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import roleTokenCall from "../role_permission";
 import { Nav } from "react-bootstrap";
 
 import logo from "assets/img/reactlogo.png";
 
 function Sidebar({ color, image, routes }) {
   const location = useLocation();
+
+  const [myRole, setMyRole] = useState({})
+
+  roleTokenCall.roleToken()
+                .then((res) => {
+                  const data = JSON.stringify(res.permissions[0]);
+                  setMyRole(data)
+                })
+                .catch(err => console.log(err));
+
+    console.log(routes);
+
+    console.log(myRole)
+
+
+
+
   const activeRoute = (routeName) => {
     return location.pathname.indexOf(routeName) > -1 ? "active" : "";
   };
+
+
+
+
   return (
     <div className="sidebar" data-image={image} data-color={color}>
       <div
@@ -32,6 +54,9 @@ function Sidebar({ color, image, routes }) {
         </div>
         <Nav>
           {routes.map((prop, key) => {
+
+
+
             if (!prop.redirect)
               return (
                 <li
@@ -53,6 +78,8 @@ function Sidebar({ color, image, routes }) {
                 </li>
               );
             return null;
+
+
           })}
         </Nav>
       </div>
@@ -61,3 +88,10 @@ function Sidebar({ color, image, routes }) {
 }
 
 export default Sidebar;
+
+
+/* 
+prop.role || prop.role2 === myRole 
+? activeRoute(prop.layout + prop.path) 
+: ""
+*/
