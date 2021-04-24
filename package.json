@@ -17,13 +17,21 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^4.1.2",
+    "babel-preset-react-app": "^10.0.0",
+    "concurrently": "^6.0.2",
     "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.16.3",
+    "express-jwt": "^6.0.0",
+    "express-jwt-authz": "^2.4.1",
+    "helmet": "^4.5.0",
     "if-env": "^1.0.4",
+    "jwks-rsa": "^2.0.3",
+    "jwt-decode": "^3.1.2",
     "mongoose": "^5.12.5"
   }
 }
