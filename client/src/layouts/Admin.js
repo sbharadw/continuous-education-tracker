@@ -11,6 +11,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import sidebarImage from "assets/img/sidebar-3.jpg";
 
+import callRoleToken  from "../components/role_permission"
+import callSecureApi from "../components/role_permission";
+
+
+
 function Admin() {
   const [image, setImage] = React.useState(sidebarImage);
   const [color, setColor] = React.useState("black");
@@ -18,14 +23,22 @@ function Admin() {
   const location = useLocation();
   const mainPanel = React.useRef();
 
+  
+
   const {user, isAuthenticated } = useAuth0();
+
+  
 
   console.log(user);  //Userinfo -------------------------------------------
 
 
   const getRoutes = (routes) => {
+    callSecureApi();
+    console.log(routes);
+
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
+
         return (
           <Route
             path={prop.layout + prop.path}

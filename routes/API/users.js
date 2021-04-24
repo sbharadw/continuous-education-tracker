@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const userController = require("../../Controllers/userController");
-
+//const { checkJwt, checkPermission } = require("../../authz/check-jwt");
 // Matches with "/api/users"
 router.route("/")
   .get(userController.findAll)

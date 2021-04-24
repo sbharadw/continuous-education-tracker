@@ -4,7 +4,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
-import ProtectedRoute from "./auth/protected-route";
+//import ProtectedRoute from "./auth/protected-route";
+
+//import callSecureApi  from "./components/role_permission"
+
 
 //import Loading from "./components/Loading";
 

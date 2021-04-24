@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import API from "../utils/API";
 
+
 // react-bootstrap components
 import {
   Badge,
@@ -14,7 +15,7 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import { useParams } from "react-router";
+//import { useParams } from "react-router";
 
 
 
@@ -24,6 +25,10 @@ function User() {
   const { user } = useAuth0();
   const {picture, email, sub } = user;
 
+  //const serverUrl = process.env.REACT_APP_SERVER_URL;
+
+
+  
   //---------------------------start page API scripts----------------------------------------------------------------------------------
 
 
@@ -32,9 +37,10 @@ function User() {
   const id = sub
 
     useEffect(() => {
+
       API.getUser(id)
         .then(res => {
-          console.log(res)
+          console.log(res.data)
           setMyUser(res.data);
         })
         .catch(err => console.log(err));

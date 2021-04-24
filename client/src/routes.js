@@ -1,7 +1,9 @@
 import Dashboard from "views/Dashboard.js";
 import UserProfile from "views/UserProfile.js";
 import TableList from "views/TableList.js";
-import Upgrade from "views/Upgrade.js";
+import Upgrade from "views/Upgrade.js"
+
+
 
 const dashboardRoutes = [
   {
