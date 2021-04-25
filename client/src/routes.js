@@ -11,6 +11,8 @@ const dashboardRoutes = [
     icon: "nc-icon nc-watch-time",
     component: Upgrade,
     layout: "/admin",
+    role: "",
+    role2: "",
   },
   {
     path: "/dashboard",
@@ -19,6 +21,7 @@ const dashboardRoutes = [
     component: Dashboard,
     layout: "/admin",
     role: "admin:true",
+    role2: "",
   },
   {
     path: "/user",
@@ -26,6 +29,8 @@ const dashboardRoutes = [
     icon: "nc-icon nc-circle-09",
     component: UserProfile,
     layout: "/admin",
+    role: "",
+    role: "",
   },
   {
     path: "/table",

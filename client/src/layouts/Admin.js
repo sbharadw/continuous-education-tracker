@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { useLocation, Route, Switch } from "react-router-dom";
-
+import { useState } from "react";
+import roleTokenCall from "../components/role_permission";
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar";
@@ -25,8 +26,22 @@ function Admin() {
 
   const getRoutes = (routes) => {
 
+  const [myRole, setMyRole] = useState({})
+
+  roleTokenCall.roleToken()
+                .then((res) => {
+                  const data = JSON.stringify(res.permissions[0]);
+                  setMyRole(data)
+                })
+                .catch(err => console.log(err));
+
+    console.log(routes);
+
+    console.log(myRole)
+
+
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin" ) {
+      if (prop.layout === "/admin" && !prop.role || prop.role2 === myRole ) {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -34,11 +49,30 @@ function Admin() {
             key={key}
           />
         );
+      } 
+      if (prop.layout === "/admin" && prop.role || prop.role2 === myRole) {
+
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            render={(props) => <prop.component {...props} />}
+            key={key}
+          />
+        );
+
       } else {
+
         return null;
+
       }
     });
+
+
+
+
   };
+
+
   
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -57,12 +91,16 @@ function Admin() {
 
     isAuthenticated && (
     <>
+    
       <div className="wrapper">
         <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
         <div className="main-panel" ref={mainPanel}>
-          <AdminNavbar />
+          
+          
           <div className="content">
             <Switch>{getRoutes(routes)}</Switch>
+            <AdminNavbar />
+
           </div>
           <Footer />
         </div>
