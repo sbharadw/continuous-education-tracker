@@ -4,18 +4,13 @@ import { Container } from "react-bootstrap";
 class Footer extends Component {
   render() {
     return (
-      <footer className="footer px-0 px-lg-3">
+      <footer bg="dark" className="footer ">
         <Container fluid>
-          <nav>
-            <ul className="footer-menu">
-              <li>
-                <a href="#" onClick={(e) => e.preventDefault()}>
-                  
-                </a>
-              </li>
-            </ul>
-
-          </nav>
+          {/* <!-- Copyright --> */}
+          <div class="col-md-12 col-sm-12 col-xs-12 text-center py-2  text-dark">
+            © 2021 Copyright:TeamHulk
+          </div>
+          {/* <!-- End Copyright --> */}
         </Container>
       </footer>
     );
