@@ -13,7 +13,7 @@ const NavBar = () => {
         
        
        <div className="logo d-flex align-items-center justify-content-start">
-       <h3 className="simple-text">CONTINUING EDUCATION TRACKER</h3> 
+       <h3 className="simple-text text-dark">CONTINUING EDUCATION TRACKER</h3> 
   </div>
           <AuthNav />
 
