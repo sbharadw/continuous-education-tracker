@@ -30,18 +30,16 @@ function Admin() {
 
   roleTokenCall.roleToken()
                 .then((res) => {
-                  const data = JSON.stringify(res.permissions[0]);
+                  const data = res.permissions[0];
                   setMyRole(data)
                 })
                 .catch(err => console.log(err));
 
-    console.log(routes);
-
-    console.log(myRole)
-
+console.log(myRole);
 
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin" && !prop.role || prop.role2 === myRole ) {
+
+      if (myRole === prop.role || typeof myRole === prop.role3) {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -50,8 +48,7 @@ function Admin() {
           />
         );
       } 
-      if (prop.layout === "/admin" && prop.role || prop.role2 === myRole) {
-
+      if (myRole === prop.role2){
         return (
           <Route
             path={prop.layout + prop.path}
@@ -59,17 +56,14 @@ function Admin() {
             key={key}
           />
         );
-
-      } else {
-
-        return null;
-
       }
+      
+      else {
+        return null;
+        }
+
     });
-
-
-
-
+    
   };
 
 

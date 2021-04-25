@@ -7,16 +7,11 @@ import logo from "assets/img/reactlogo.png";
 
 function Sidebar({ color, image, routes }) {
   const location = useLocation();
-
-
   const activeRoute = (routeName) => {
 
-    console.log(routeName);
     return location.pathname.indexOf(routeName) > -1 ? "active" : "";
+
   };
-
-
-
 
   return (
     <div className="sidebar" data-image={image} data-color={color}>
@@ -30,8 +25,6 @@ function Sidebar({ color, image, routes }) {
    
         <Nav>
           {routes.map((prop, key) => {
-
-
 
             if (!prop.redirect)
               return (
@@ -54,8 +47,6 @@ function Sidebar({ color, image, routes }) {
                 </li>
               );
             return null;
-
-
           })}
         </Nav>
       </div>

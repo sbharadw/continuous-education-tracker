@@ -14,9 +14,10 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    create: function(req, res) {
+    create: function({ body }, res) {
         db.Info
-            .create(req.body)
+            .create(body)
+            .then(({ _id }) => db.User.findOneAndUpdate({}, { $push: { info: _id } }, { new: true }))
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
@@ -34,3 +35,6 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     }
 }
+
+
+
