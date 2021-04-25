@@ -9,13 +9,17 @@ const infoSchema = new Schema({
         type: Number, 
         required: true 
     },
-    totalHours: {
+    burnHours: {
         type: Number,
-        required: true 
+        required: false 
+    },
+    subId: {
+        type: String,
+        required: true
     },
     synopsis: {
         type: String, 
-        required: false,
+        required: false
     },
     date: { 
         type: Date, 
