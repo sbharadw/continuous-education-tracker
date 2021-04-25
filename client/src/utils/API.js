@@ -11,7 +11,7 @@ export default {
     },
   // Gets the user with the given id
     getUser: function(id) {
-      console.log("STEP 2 ********************************")
+      // console.log("STEP 2 ********************************")
       console.log(id)
         return axios.get("/api/users/" + id);
     },
@@ -24,10 +24,11 @@ export default {
         return axios.post("/api/users", userData);
     },
   // Updates a user
-    updateUser: function(id){
-      console.log("STEP 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-      console.log(id)
-      return axios.put("/api/users/" + id);
+    updateUser: function(id, userData){
+      // console.log("STEP 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+      // console.log(id)
+      // console.log(userData)
+      return axios.put("/api/users/" + id, userData);
     },
 
     /*------------------ Course hours routes ----------------------------- */

@@ -25,21 +25,21 @@ function User() {
   //---------------------------start page API scripts----------------------------------------------------------------------------------
 
 
-  const [myUser, setMyUser] = useState({})
-
   const id = sub
 
+  //Autopopulates fields and uses the existence of a res file to tell weather or not user info has previously be submitted
     useEffect(() => {
       API.getUser(id)
         .then(res => {
+          const data = res.data;
           console.log(res)
           populateFields(res)
           handleDisable(res)
-          handleFormUpdate(res)
-          setMyUser(res.data)
         })
         .catch(err => console.log(err));
     }, [])
+
+
 
   const [formObject, setFormObject] = useState({
     firstName: "",
@@ -51,14 +51,17 @@ function User() {
     email: email
   })
 
+  //autopopulates info based on user db data and if data exists, sets created to true
   function populateFields(res){
     if(res !== null){
-      setFormObject({ hospital: res.data.hospital })
-      setFormObject({ unit: res.data.unit })
-      setFormObject({ firstName: res.data.firstname })
-      setFormObject({ lastName: res.data.lastname })
-      setFormObject({ employeeId: res.data.employeeId })
+      setFormObject({ 
+        hospital: res.data.hospital,
+        unit: res.data.unit,
+        firstName: res.data.firstname,
+        lastName: res.data.lastname,
+        employeeId: res.data.employeeId })
       setDisableObject({ created: true })
+      console.log(disableObject.created)
   }
 }
 
@@ -73,7 +76,6 @@ function User() {
     }
   }
 
-
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
       const { name, value } = event.target;
@@ -81,7 +83,7 @@ function User() {
       console.log(formObject)
     };
 
-      // When the form is submitted, use the API.saveUser method to save the user data
+      // When the form is submitted and has not previously been submitted use the API.saveUser method to save the user data, else update user data to newly input information
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.firstName && formObject.lastName && formObject.hospital && formObject.employeeId && formObject.unit && disableObject.created === false) {
@@ -99,25 +101,23 @@ function User() {
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     } else{
 
-      API.updateUser({
+      API.updateUser(id, {
         firstname: formObject.firstName,
         lastname: formObject.lastName,
         hospital: formObject.hospital,
         employeeId: formObject.employeeId,
         unit: formObject.unit,
-        subId: formObject.subId,
+        subId: sub,
         email: formObject.email
       })
-      .then(console.log(`sending updated object: ${formObject}`))
+      .then(console.log(`sending updated object: ${JSON.stringify(formObject)}`))
       .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
   };
 
     //when the form is submitted, use the API.updateUser method to update the user data
-  function handleFormUpdate(event, res){
-    event.preventDefault();
+  function handleFormUpdate(){
     setDisableObject({disable: false})
-    console.log(myUser)
   }
 
 
