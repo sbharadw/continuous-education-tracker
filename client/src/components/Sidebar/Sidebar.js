@@ -27,17 +27,7 @@ function Sidebar({ color, image, routes }) {
         }}
       />
       <div className="sidebar-wrapper">
-        <div className="logo d-flex align-items-center justify-content-start">
-          <a
-            href="https://github.com/sbharadw/continuous-education-tracker"
-            className="simple-text logo-mini mx-1"
-          >
-  
-          </a>
-          <a className="simple-text">
-          Continuing Education Tracker
-          </a>
-        </div>
+   
         <Nav>
           {routes.map((prop, key) => {
 

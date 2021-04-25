@@ -35,7 +35,7 @@ export default {
 
   // Gets all Courses
     getCourses: function() {
-        return axios.get("/api/info");
+        return axios.get("/api/info/");
     },
   // Gets the Course with the given id
     getCourse: function(id) {
