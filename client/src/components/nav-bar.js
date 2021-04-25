@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
  
       <nav className="navbar">
-        <img src={logo} style={{width:100, marginTop: -7}} alt="Logo" />
+        <img src={logo} style={{width:80, marginTop: -7}} alt="Logo" />
         
        
        <div className="logo d-flex align-items-center justify-content-start">

@@ -22,6 +22,9 @@ const Auth0ProviderWithHistory = ({ children }) => {
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
       audience={audience}
+      access_token_authz
+      responseType='token id_token'
+      scope= 'openid'
     >
       {children}
     </Auth0Provider>
