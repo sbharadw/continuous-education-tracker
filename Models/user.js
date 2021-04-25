@@ -19,12 +19,12 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    firstName: {
+    firstname: {
         type: String,
         trim : true,
         required: true,
     },
-    lastName: {
+    lastname: {
         type: String,
         trim : true,
         required: true,

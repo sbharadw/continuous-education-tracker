@@ -11,6 +11,8 @@ export default {
     },
   // Gets the user with the given id
     getUser: function(id) {
+      console.log("STEP 2 ********************************")
+      console.log(id)
         return axios.get("/api/users/" + id);
     },
   // Deletes the user with the given id
@@ -20,6 +22,12 @@ export default {
   // Saves a user to the database
     saveUser: function(userData) {
         return axios.post("/api/users", userData);
+    },
+  // Updates a user
+    updateUser: function(id){
+      console.log("STEP 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+      console.log(id)
+      return axios.put("/api/users/" + id);
     },
 
     /*------------------ Course hours routes ----------------------------- */

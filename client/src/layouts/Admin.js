@@ -56,16 +56,19 @@ function Admin() {
 
     isAuthenticated && (
     <>
+    
       <div className="wrapper">
         <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
         <div className="main-panel" ref={mainPanel}>
-          <AdminNavbar />
+          
+          
           <div className="content">
             <Switch>{getRoutes(routes)}</Switch>
+            <AdminNavbar />
           </div>
-          <Footer />
         </div>
       </div>
+      <Footer />
       <FixedPlugin
         hasImage={hasImage}
         setHasImage={() => setHasImage(!hasImage)}
@@ -74,6 +77,8 @@ function Admin() {
         image={image}
         setImage={(image) => setImage(image)}
       />
+   
+
     </>
     )
   );
