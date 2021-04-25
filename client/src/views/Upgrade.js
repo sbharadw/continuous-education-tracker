@@ -4,14 +4,9 @@ import API from "../utils/API";
 
 // react-bootstrap components
 import {
-  Badge,
   Button,
   Card,
   Form,
-  Checkbox,
-  Navbar,
-  Nav,
-  Table,
   Container,
   Row,
   Col,
@@ -42,10 +37,9 @@ function Upgrade() {
 
       // When the form is submitted, use the API.saveCourse method to save the course data
   function handleFormSubmit(event) {
-    event.preventDefault();
-    // setFormObject({...formObject, burnHours: formObject.courseHours});
-    // handleCheckboxChange();
-    console.log("object before submittion " + formObject);
+    event.preventDefault ();
+    console.log("burn hours =>"+ formObject.burnHours);
+    console.log("object before submittion " + JSON.stringify(formObject));
     if (formObject.courseName && formObject.courseHours && formObject.subId) {
       
       API.saveCourse({
@@ -55,7 +49,7 @@ function Upgrade() {
        synopsis: formObject.synopsis,
        subId: formObject.subId
       })
-        .then(console.log(`sending object: ${formObject}`))
+        .then(console.log(`sending object: ${JSON.stringify(formObject)}`))
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
   };
@@ -99,7 +93,7 @@ return (
                           placeholder="Hours"
                           type="number"
                           onChange={handleInputChange}
-                          value={formObject.courseHourse}
+                          value={formObject.courseHours}
                           name="courseHours"
                         ></Form.Control>
                       </Form.Group>

@@ -15,12 +15,11 @@ const infoSchema = new Schema({
     },
     subId: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     synopsis: {
         type: String, 
-        required: false,
+        required: false
     },
     date: { 
         type: Date, 
