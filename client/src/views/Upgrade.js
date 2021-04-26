@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import API from "../utils/API";
+import ChartistGraph from "react-chartist";
 
 // react-bootstrap components
 import {
@@ -52,6 +53,8 @@ function Upgrade() {
         .then(console.log(`sending object: ${JSON.stringify(formObject)}`))
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
+
+    // handleCleanInputs();
   };
 
   //Handles checkbox change
@@ -59,6 +62,24 @@ function Upgrade() {
     setFormObject({...formObject, burnHours: formObject.courseHours});
     console.log("updating burn hours " + formObject.burnHours);
   }
+
+  //Filling out the cards with information the user entered
+  function handleCardsInfo(event) {
+    setFormObject({...formObject});
+    console.log("form object for cards => " + JSON.stringify(formObject));
+  }
+
+  //Cleaning input forms once the user adds the course
+  function handleCleanInputs(event){
+    setFormObject({
+      courseName: "",
+      courseHours: "",
+      burnHours: "", 
+      synopsis: "",
+      subId: sub,
+    });
+  } 
+
 //---------------------------------End Scripts ---------------------------------------------
 
 
@@ -66,6 +87,7 @@ return (
   <>
    <Container fluid>
       <Row>
+        
         <Col md="8">
           <Card>
             <Card.Header>
@@ -160,36 +182,150 @@ return (
                 <p className="description"></p>
               </div>
             </Card.Body>
-            {/* <hr></hr>
-            <div className="button-container mr-auto ml-auto">
-              <Button
-                className="btn-simple btn-icon"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-                variant="link"
-              >
-                <i className="fab fa-facebook-square"></i>
-              </Button>
-              <Button
-                className="btn-simple btn-icon"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-                variant="link"
-              >
-                <i className="fab fa-twitter"></i>
-              </Button>
-              <Button
-                className="btn-simple btn-icon"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-                variant="link"
-              >
-                <i className="fab fa-google-plus-square"></i>
-              </Button>
-            </div> */}
           </Card>
         </Col>
       </Row>
+
+        <Row>
+          
+          <Col lg="3" sm="6">
+            <Card className="card-stats">
+              <Card.Body>
+                <Row>
+                  <Col xs="5">
+                    <div className="icon-big text-center icon-warning">
+                      <i className="nc-icon nc-check-2 text-primary"></i>
+                    </div>
+                  </Col>
+                  <Col xs="7">
+                    <div className="numbers">
+                      <p className="card-category">COURSE NAME</p>
+                      <Card.Title as="h4">{formObject.courseName}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+              <Card.Footer>
+                <hr></hr>
+                <div className="stats">
+                  <i className="fas fa-redo mr-1"></i>
+                  Update Hours
+                </div>
+              </Card.Footer>
+            </Card>
+          </Col>
+
+          <Col lg="3" sm="6">
+            <Card className="card-stats">
+              <Card.Body>
+                <Row>
+                  <Col xs="5">
+                    <div className="icon-big text-center icon-warning">
+                      <i className="nc-icon nc-ambulance text-success"></i>
+                    </div>
+                  </Col>
+                  <Col xs="7">
+                    <div className="numbers">
+                      <p className="card-category">TRAUMA HOURS</p>
+                      <Card.Title as="h4">{formObject.courseHours}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+              <Card.Footer>
+                <hr></hr>
+                <div className="stats">
+                  <i className="far fa-calendar-alt mr-1"></i>
+                  Update Hours
+                </div>
+              </Card.Footer>
+            </Card>
+          </Col>
+
+          <Col lg="3" sm="6">
+            <Card className="card-stats">
+              <Card.Body>
+                <Row>
+                  <Col xs="5">
+                    <div className="icon-big text-center icon-warning">
+                      <i className="nc-icon nc-bold text-warning"></i>
+                    </div>
+                  </Col>
+                  <Col xs="7">
+                    <div className="numbers">
+                      <p className="card-category">BURN HOURS</p>
+                      <Card.Title as="h4">{formObject.burnHours}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+              <Card.Footer>
+                <hr></hr>
+                <div className="stats">
+                  <i className="fas fa-redo mr-1"></i>
+                  Update hours
+                </div>
+              </Card.Footer>
+            </Card>
+          </Col>
+          
+          <Col lg="3" sm="6">
+            <Card className="card-stats">
+              <Card.Body>
+                <Row>
+                  <Col xs="5">
+                    <div className="icon-big text-center icon-warning">
+                      <i className="nc-icon nc-time-alarm text-danger"></i>
+                    </div>
+                  </Col>
+                  <Col xs="7">
+                    <div className="numbers">
+                      <p className="card-category">SYNOPSIS</p>
+                      <Card.Title as="h4">{formObject.synopsis}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+              <Card.Footer>
+                <hr></hr>
+                <div className="stats">
+                  <i className="far fa-clock-o mr-1"></i>
+                  Latest completed hours
+                </div>
+              </Card.Footer>
+            </Card>
+          </Col>
+
+          {/* <Col lg="3" sm="6">
+            <Card className="card-stats">
+              <Card.Body>
+                <Row>
+                  <Col xs="5">
+                    <div className="icon-big text-center icon-warning">
+                      <i className="nc-icon nc-check-2 text-primary"></i>
+                    </div>
+                  </Col>
+                  <Col xs="7">
+                    <div className="numbers">
+                      <p className="card-category">COURE NAME</p>
+                      <Card.Title as="h4">{handleFormSubmit.courseName}</Card.Title>
+                    </div>
+                  </Col>
+                </Row>
+              </Card.Body>
+              <Card.Footer>
+                <hr></hr>
+                <div className="stats">
+                  <i className="fas fa-redo mr-1"></i>
+                  Update Hours
+                </div>
+              </Card.Footer>
+            </Card>
+          </Col> */}
+          
+        </Row>
+
+
     </Container>
   </>
 );
