@@ -1,6 +1,6 @@
 # Light Bootstrap Dashboard React
 
-**[Continous Education Tracker ](https://github.com/sbharadw/continuous-education-tracker)** is an admin , educator and nurse dashboard application designed to track continuing aducation hours. It is built on top of [React Bootstrap](https://5c507d49471426000887a6a7--react-bootstrap.netlify.com/), using [Light Bootstrap Dashboard](https://www.creative-tim.com/product/light-bootstrap?ref=lbdr-readme) and it is fully responsive.
+**[Continous Education Tracker ](https://github.com/sbharadw/continuous-education-tracker)** is an admin , educator and nurse dashboard application designed to track continuing education hours. It is built on top of [React Bootstrap](https://5c507d49471426000887a6a7--react-bootstrap.netlify.com/), using [Light Bootstrap Dashboard](https://www.creative-tim.com/product/light-bootstrap?ref=lbdr-readme) and it is fully responsive.
 
 It comes with 6 filter colors for the sidebar (`black`, `azure`,`green`,`orange`,`red`,`purple`) and an option to have a background image.
 
