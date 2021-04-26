@@ -22,6 +22,7 @@ findByUnit: function(req, res) {
     
     db.User
         .find({unit: req.params.id}, req.body)
+        .populate("info")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
@@ -64,5 +65,6 @@ userCHr: function (req, res){
 
 }
 };
+
 
 

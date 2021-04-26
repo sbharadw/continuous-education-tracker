@@ -25,6 +25,7 @@ function TableList() {
 
   function handleSearchTerm(event){
     const { value } = event.target;
+    console.log(value)
     setSearchTerm({nurseUnit: value})
   }
 
