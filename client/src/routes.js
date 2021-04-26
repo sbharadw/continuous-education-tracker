@@ -39,9 +39,14 @@ const dashboardRoutes = [
     name: "ADD HOURS",
     icon: "nc-icon nc-watch-time",
     component: Upgrade,
-    layout: "/admin"
+    layout: "/admin",
+    role: "admin:true",
+    role3: "undefined"
   }
 
 ];
 
 export default dashboardRoutes;
+
+//exact path="/admin/user"
+  //         "/admin/table"
