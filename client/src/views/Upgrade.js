@@ -29,6 +29,8 @@ function Upgrade() {
     subId: sub,
   })
 
+
+
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
       const { name, value } = event.target;
