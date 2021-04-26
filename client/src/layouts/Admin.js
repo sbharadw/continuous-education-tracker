@@ -19,7 +19,7 @@ function Admin() {
   const location = useLocation();
   const mainPanel = React.useRef();
 
-  const {user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
   console.log(user);  //Userinfo -------------------------------------------
 
@@ -47,7 +47,7 @@ function Admin() {
             key={key}
           />
         );
-      } else if (myRole === prop.role2){
+      } else if (myRole === prop.role2) {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -56,17 +56,17 @@ function Admin() {
           />
         );
       }
-      
+
       else {
         return null;
-        }
+      }
 
     });
-    
+
   };
 
 
-  
+
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -83,31 +83,32 @@ function Admin() {
   return (
 
     isAuthenticated && (
-    <>
-    
-      <div className="wrapper">
-        <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
-        <div className="main-panel" ref={mainPanel}>
-          
-          
-          <div className="content">
-            <Switch>{getRoutes(routes)}</Switch>
-            <AdminNavbar />
+      <>
+
+        <div className="wrapper">
+          <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
+
+          <div className="main-panel" ref={mainPanel}>
+
+            <div className="content">
+              <Switch>{getRoutes(routes)}</Switch>
+              <AdminNavbar />
+            </div>
           </div>
         </div>
-      </div>
-      <Footer />
-      <FixedPlugin
-        hasImage={hasImage}
-        setHasImage={() => setHasImage(!hasImage)}
-        color={color}
-        setColor={(color) => setColor(color)}
-        image={image}
-        setImage={(image) => setImage(image)}
-      />
-   
+        <Footer />
 
-    </>
+        <FixedPlugin
+          hasImage={hasImage}
+          setHasImage={() => setHasImage(!hasImage)}
+          color={color}
+          setColor={(color) => setColor(color)}
+          image={image}
+          setImage={(image) => setImage(image)}
+        />
+
+
+      </>
     )
   );
 }
