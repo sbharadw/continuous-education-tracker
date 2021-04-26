@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { useLocation, Route, Switch } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import roleTokenCall from "../components/role_permission";
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Footer from "components/Footer/Footer";
@@ -23,24 +23,19 @@ function Admin() {
 
   console.log(user);  //Userinfo -------------------------------------------
 
-  const [myRole, setMyRole] = useState()
 
+  const getRoutes = (routes) => {
 
-  useEffect(() => {
-    roleTokenCall.roleToken()
+  const [myRole, setMyRole] = useState({})
+
+  roleTokenCall.roleToken()
                 .then((res) => {
                   const data = res.permissions[0];
                   setMyRole(data)
                 })
                 .catch(err => console.log(err));
-  }, [])
-  
 
 console.log(myRole);
-
-
-
-  const getRoutes = (routes) => {
 
     return routes.map((prop, key) => {
 
