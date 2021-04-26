@@ -13,4 +13,8 @@ router
   .put(userController.update)
   .delete(userController.remove);
 
+router
+  .route("/unit/:id")
+  .get(userController.findByUnit)
+
 module.exports = router;

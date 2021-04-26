@@ -8,7 +8,7 @@ const UserSchema = new Schema({
     day: {
         type: Date,
         default: Date.now()
-      },
+    },
     subId: {
         type: String,
         required: true,
