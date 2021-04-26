@@ -10,8 +10,11 @@ import { useAuth0 } from "@auth0/auth0-react";
       const { getAccessTokenSilently } = useAuth0();
 
       const token = await getAccessTokenSilently();
+      console.log(token)
 
       var decoded = jwt_decode(token);
+
+      console.log(decoded)
   
       let role = decoded;
   
