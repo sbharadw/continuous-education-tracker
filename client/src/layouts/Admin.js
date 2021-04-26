@@ -35,7 +35,7 @@ function Admin() {
                 })
                 .catch(err => console.log(err));
 
-console.log(myRole);
+
 
     return routes.map((prop, key) => {
 
