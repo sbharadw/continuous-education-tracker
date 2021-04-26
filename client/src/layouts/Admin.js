@@ -39,8 +39,6 @@ console.log(myRole);
 
     return routes.map((prop, key) => {
 
-    console.log(prop.role)
-
       if (myRole === prop.role || typeof myRole === prop.role3) {
         return (
           <Route
