@@ -196,7 +196,7 @@ return (
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-bullet-list-67 text-info"></i>
+                      <i className="nc-icon nc-tag-content text-info"></i>
                     </div>
                   </Col>
                   <Col xs="7">
