@@ -46,8 +46,7 @@ function Admin() {
         return (
           null
         );
-      } 
-      if (myRole === prop.role) {
+      } else if (myRole === prop.role) {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -55,25 +54,27 @@ function Admin() {
             key={key}
           />
         );
+      } else if (myRole === prop.role2) {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            render={(props) => <prop.component {...props} />}
+            key={key}
+          />
+        );
+      } else if (myRole === prop.role3) {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            render={(props) => <prop.component {...props} />}
+            key={key}
+          />
+        );
+      } else {
+
+        return null
+
       }
-      if (myRole === prop.role2) {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            render={(props) => <prop.component {...props} />}
-            key={key}
-          />
-        );
-      } 
-      if (myRole === prop.role3) {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            render={(props) => <prop.component {...props} />}
-            key={key}
-          />
-        );
-      } 
     }))
   };
 
