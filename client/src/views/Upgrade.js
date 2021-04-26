@@ -166,7 +166,7 @@ return (
               <img
                 alt="cityscape profile background"
                 src={
-                  require("assets/img/photo-1431578500526-4d9613015464.jpeg")
+                  require("assets/img/sidebar-4.jpg")
                     .default
                 }
               ></img>
@@ -196,7 +196,7 @@ return (
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-check-2 text-primary"></i>
+                      <i className="nc-icon nc-bullet-list-67 text-info"></i>
                     </div>
                   </Col>
                   <Col xs="7">
@@ -211,7 +211,7 @@ return (
                 <hr></hr>
                 <div className="stats">
                   <i className="fas fa-redo mr-1"></i>
-                  Update Hours
+                  Update
                 </div>
               </Card.Footer>
             </Card>
@@ -223,7 +223,7 @@ return (
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-ambulance text-success"></i>
+                      <i className="nc-icon nc-ambulance text-warning"></i>
                     </div>
                   </Col>
                   <Col xs="7">
@@ -237,7 +237,7 @@ return (
               <Card.Footer>
                 <hr></hr>
                 <div className="stats">
-                  <i className="far fa-calendar-alt mr-1"></i>
+                  <i className="fa fa-plus-circle mr-1"></i>
                   Update Hours
                 </div>
               </Card.Footer>
@@ -250,7 +250,7 @@ return (
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-bold text-warning"></i>
+                      <i className="nc-icon nc-time-alarm text-danger"></i>
                     </div>
                   </Col>
                   <Col xs="7">
@@ -264,7 +264,7 @@ return (
               <Card.Footer>
                 <hr></hr>
                 <div className="stats">
-                  <i className="fas fa-redo mr-1"></i>
+                  <i className="fa fa-plus-circle mr-1"></i>
                   Update hours
                 </div>
               </Card.Footer>
@@ -277,7 +277,7 @@ return (
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-time-alarm text-danger"></i>
+                      <i className="nc-icon nc-single-copy-04 text-success"></i>
                     </div>
                   </Col>
                   <Col xs="7">
@@ -291,8 +291,8 @@ return (
               <Card.Footer>
                 <hr></hr>
                 <div className="stats">
-                  <i className="far fa-clock-o mr-1"></i>
-                  Latest completed hours
+                  <i className="fa fa-clone mr-1"></i>
+                  Add
                 </div>
               </Card.Footer>
             </Card>
