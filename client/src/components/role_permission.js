@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
   export default {
 
     // Get acccess token along with the user permission provided via Auth0
+    //Decode access token using jwt_decode package
 
     roleToken: async function() {
       

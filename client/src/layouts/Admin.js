@@ -6,7 +6,6 @@ import AdminNavbar from "components/Navbars/AdminNavbar";
 import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
-//import roleTokenCall from "../components/role_permission";
 import routes from "../routes"
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -20,9 +19,10 @@ function Admin() {
   const location = useLocation();
   const mainPanel = React.useRef();
 
-  const {user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
-  console.log(user);  //Userinfo -------------------------------------------
+  //User's auth0 info.
+  console.log(user); 
 
   const [myRole, setMyRole] = useState({})
   
@@ -36,13 +36,19 @@ function Admin() {
 
   }
 
+  // Popolating routes based on user's role
   const getRoutes = (routes) => {
 
     console.log(myRole)
    
-    return routes.map((prop, key) => {
-
-      if (myRole == prop.role || typeof myRole == prop.role3) {
+    return(
+      routes.map((prop, key) => {
+      if (myRole === undefined) {
+        return (
+          null
+        );
+      } 
+      if (myRole === prop.role) {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -50,24 +56,28 @@ function Admin() {
             key={key}
           />
         );
-      } else {
+      }
+      if (myRole === prop.role2) {
         return (
-      <>
-         <Route
-          exact path={"/admin/user"}
-           render={(props) => <prop.component {...props} />}
-           key={key}
-        />
+          <Route
+            path={prop.layout + prop.path}
+            render={(props) => <prop.component {...props} />}
+            key={key}
+          />
+        );
+      } 
+      if (myRole === prop.role3) {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            render={(props) => <prop.component {...props} />}
+            key={key}
+          />
+        );
+      } 
+    }))
+  };
 
-         <Route
-           path={"/admin/table"}
-           render={(props) => <prop.component {...props} />}
-           key={key}
-
-        />
-      </>)}});
-    
-};
 
 
   React.useEffect(() => {
@@ -87,31 +97,32 @@ function Admin() {
   return (
 
     isAuthenticated && (
-    <>
-    
-      <div className="wrapper">
-        <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
-        <div className="main-panel" ref={mainPanel}>
-          
-          
-          <div className="content">
-            <Switch>{getRoutes(routes)}</Switch>
-            <AdminNavbar />
+      <>
+
+        <div className="wrapper">
+          <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
+
+          <div className="main-panel" ref={mainPanel}>
+
+            <div className="content">
+              <Switch>{getRoutes(routes)}</Switch>
+              <AdminNavbar />
+            </div>
           </div>
         </div>
-      </div>
-      <Footer />
-      <FixedPlugin
-        hasImage={hasImage}
-        setHasImage={() => setHasImage(!hasImage)}
-        color={color}
-        setColor={(color) => setColor(color)}
-        image={image}
-        setImage={(image) => setImage(image)}
-      />
-   
+        <Footer />
 
-    </>
+        <FixedPlugin
+          hasImage={hasImage}
+          setHasImage={() => setHasImage(!hasImage)}
+          color={color}
+          setColor={(color) => setColor(color)}
+          image={image}
+          setImage={(image) => setImage(image)}
+        />
+
+
+      </>
     )
   );
 }

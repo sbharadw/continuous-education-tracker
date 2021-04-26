@@ -11,7 +11,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-chart-pie-35",
     component: Dashboard,
     layout: "/admin",
-    role: "admin:true"
+    role: "admin"
    
   },
   {
@@ -20,9 +20,9 @@ const dashboardRoutes = [
     icon: "nc-icon nc-circle-09",
     component: UserProfile,
     layout: "/admin",
-    role: "admin:true",
-    role2: "educator:true",
-    role3: "undefined"
+    role: "admin",
+    role2: "educator",
+    role3: "nurse"
   },
   {
     path: "/table",
@@ -30,8 +30,8 @@ const dashboardRoutes = [
     icon: "nc-icon nc-notes",
     component: TableList,
     layout: "/admin",
-    role: "admin:true",
-    role2: "educator:true"
+    role: "admin",
+    role2: "educator"
   },
   {
     upgrade: true,
@@ -40,8 +40,8 @@ const dashboardRoutes = [
     icon: "nc-icon nc-watch-time",
     component: Upgrade,
     layout: "/admin",
-    role: "admin:true",
-    role3: "undefined"
+    role: "admin",
+    role3: "nurse"
   }
 
 ];
