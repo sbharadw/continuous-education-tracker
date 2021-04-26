@@ -16,6 +16,15 @@ findById: function(req, res) {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
+findByUnit: function(req, res) {
+    console.log('PARAMS *************************')
+    console.log(req.params)
+    
+    db.User
+        .find({unit: req.params.id}, req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
 create: function(req, res) {
     console.log(req.body)
     db.User
