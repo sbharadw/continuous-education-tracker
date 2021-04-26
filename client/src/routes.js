@@ -4,14 +4,7 @@ import TableList from "views/TableList.js";
 import Upgrade from "views/Upgrade.js";
 
 const dashboardRoutes = [
-  {
-    upgrade: true,
-    path: "/upgrade",
-    name: "ADD HOURS",
-    icon: "nc-icon nc-watch-time",
-    component: Upgrade,
-    layout: "/admin"
-  },
+
   {
     path: "/dashboard",
     name: "Dashboard",
@@ -39,6 +32,14 @@ const dashboardRoutes = [
     layout: "/admin",
     role: "admin:true",
     role2: "educator:true"
+  },
+  {
+    upgrade: true,
+    path: "/upgrade",
+    name: "ADD HOURS",
+    icon: "nc-icon nc-watch-time",
+    component: Upgrade,
+    layout: "/admin"
   }
 
 ];
