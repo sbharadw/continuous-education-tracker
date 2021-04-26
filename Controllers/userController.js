@@ -44,5 +44,16 @@ remove: function(req, res) {
         .then(dbModel => dbModel.remove())
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
-    }
+    },
+
+userCHr: function (req, res){
+
+    db.User.find({})
+    .populate("info")
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+
+}
 };
+
+

@@ -8,8 +8,11 @@ import logo from "assets/img/reactlogo.png";
 function Sidebar({ color, image, routes }) {
   const location = useLocation();
   const activeRoute = (routeName) => {
+
     return location.pathname.indexOf(routeName) > -1 ? "active" : "";
+
   };
+
   return (
     <div className="sidebar" data-image={image} data-color={color}>
       <div
@@ -22,6 +25,7 @@ function Sidebar({ color, image, routes }) {
    
         <Nav>
           {routes.map((prop, key) => {
+
             if (!prop.redirect)
               return (
                 <li
@@ -51,3 +55,10 @@ function Sidebar({ color, image, routes }) {
 }
 
 export default Sidebar;
+
+
+/* 
+prop.role || prop.role2 === myRole 
+? activeRoute(prop.layout + prop.path) 
+: ""
+*/
