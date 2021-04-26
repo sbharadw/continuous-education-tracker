@@ -15,6 +15,12 @@ export default {
       console.log(id)
         return axios.get("/api/users/" + id);
     },
+    //Gets users by unit name
+    getUsersByUnit: function(id) {
+      console.log("STEP 2 ###############################")
+      console.log(id)
+        return axios.get(`/api/users/unit/${id}`);
+    },
   // Deletes the user with the given id
     deleteUser: function(id) {
         return axios.delete("/api/users/" + id);

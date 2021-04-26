@@ -24,14 +24,13 @@ function User() {
 
   //---------------------------start page API scripts----------------------------------------------------------------------------------
 
-
   const id = sub
 
   //Autopopulates fields and uses the existence of a res file to tell weather or not user info has previously be submitted
     useEffect(() => {
       API.getUser(id)
         .then(res => {
-          const data = res.data;
+          console.log("GOT IT")
           console.log(res)
           populateFields(res)
           handleDisable(res)
@@ -40,7 +39,7 @@ function User() {
     }, [])
 
 
-
+    //set initial state for formObject
   const [formObject, setFormObject] = useState({
     firstName: "",
     lastName: "",
@@ -60,16 +59,20 @@ function User() {
         firstName: res.data.firstname,
         lastName: res.data.lastname,
         employeeId: res.data.employeeId })
-      setDisableObject({ created: true })
+      setDisableObject({ 
+        created: true,
+        disable: true
+      })
       console.log(disableObject.created)
   }
 }
-
+    //sets initial form elements to disable:false and created:false then remains if no db info is found
   const[disableObject, setDisableObject] = useState({
     disable: false,
     created: false
   })
 
+  //if db data is found then set form elements disable:true 
   const handleDisable = (res) => {
     if (res !== null){
       setDisableObject({disable: true})
@@ -255,7 +258,7 @@ function User() {
                 <img
                   alt="cityscape profile background"
                   src={
-                    require("assets/img/photo-1431578500526-4d9613015464.jpeg")
+                    require("assets/img/sidebar-5.jpg")
                       .default
                   }
                 ></img>
@@ -281,23 +284,6 @@ function User() {
                   onClick={(e) => e.preventDefault()}
                   variant="link"
                 >
-                  <i className="fab fa-facebook-square"></i>
-                </Button>
-                <Button
-                  className="btn-simple btn-icon"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  variant="link"
-                >
-                  <i className="fab fa-twitter"></i>
-                </Button>
-                <Button
-                  className="btn-simple btn-icon"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  variant="link"
-                >
-                  <i className="fab fa-google-plus-square"></i>
                 </Button>
               </div>
             </Card>
