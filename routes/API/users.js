@@ -5,7 +5,7 @@ const userController = require("../../Controllers/userController");
 router.route("/")
   .get(userController.findAll)
   .post(userController.create);
-
+  
 // Matches with "/api/users/:id"
 router
   .route("/:id")
@@ -18,11 +18,5 @@ router
   .route("/unit/:id")
   .get(userController.findByUnit)
 
-//Matches with "/api/users/aggregate"
-/*
-router
-  .route("/")
-  .get(userController.aggregate);
-*/
 
 module.exports = router;
