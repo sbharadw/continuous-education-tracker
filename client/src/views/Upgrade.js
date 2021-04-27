@@ -95,16 +95,17 @@ function Upgrade() {
 
   // Read saved data from database table and update formObject with it to use for filling out the cards
   function fillOutCards(){
-
+    console.log("GET the course info from database with id => " + id);
+    
     API.getCourse(id)
     .then(res => {
-      console.log("GET the course info from database")
       console.log(res)
       setFormObject({ 
         courseName: res.data.courseName,
         courseHours: res.data.courseHours,
         burnHours: res.data.burnHours,
         synopsis: res.data.synopsis,
+        subId: sub
          })
     })
     .catch(err => console.log(err));

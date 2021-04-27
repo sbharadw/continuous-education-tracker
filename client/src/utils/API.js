@@ -36,10 +36,6 @@ export default {
       // console.log(userData)
       return axios.put("/api/users/" + id, userData);
     },
-  //Aggregate info. on users
-    aggregrateinfo: function() {
-      return axios.get("/api/users/aggregate");
-  },
 
     /*------------------ Course hours routes ----------------------------- */
                 //references info model + infoController
@@ -60,5 +56,4 @@ export default {
     saveCourse: function(userData) {
         return axios.post("/api/info", userData);
     }
-    
 };
