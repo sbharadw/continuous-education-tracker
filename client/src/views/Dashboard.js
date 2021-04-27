@@ -22,82 +22,69 @@ function Dashboard() {
     <>
       <Container fluid>
         <Row>
-          <Col md="8">
-            <Card>
+          <Col md="4">
+          <Card>
               <Card.Header>
-                <Card.Title as="h4">Education timeline</Card.Title>
-                <p className="card-category">Performance</p>
+                <Card.Title as="h4">Trauma Hours</Card.Title>
+                <p className="card-category">for All Nurses</p>
+
               </Card.Header>
               <Card.Body>
-                <div className="ct-chart" id="chartHours">
+                <div
+                  className="ct-chart ct-perfect-fourth"
+                  id="chartPreferences"
+                >
                   <ChartistGraph
                     data={{
-                      labels: [
-                        "Jan",
-                        "Feb",
-                        "Mar",
-                        "Apr",
-                        "May",
-                        "June",
-                        "July",
-                        "Aug",
-                        "Sep",
-                        "Oct",
-                        "Nov",
-                        "Dec",
-                      ],
-                      series: [
-                        [28, 38, 49, 49, 55, 58, 69, 69, 10, 20, 30, 10, 70],
-                        [67, 15, 14, 24, 28, 33, 43, 43, 20, 30, 40, 23, 80],
-                        [95, 53, 63, 10, 19, 23, 30, 30, 20, 15, 20, 23, 24],
-                      ],
+                      labels: ["80%", "20%"],
+                      series: [80, 20],
                     }}
-                    type="Line"
-                    options={{
-                      low: 0,
-                      high: 100,
-                      showArea: false,
-                      height: "245px",
-                      axisX: {
-                        showGrid: false,
-                      },
-                      lineSmooth: true,
-                      showLine: true,
-                      showPoint: true,
-                      fullWidth: true,
-                      chartPadding: {
-                        right: 50,
-                      },
-                    }}
-                    responsiveOptions={[
-                      [
-                        "screen and (max-width: 640px)",
-                        {
-                          axisX: {
-                            labelInterpolationFnc: function (value) {
-                              return value[0];
-                            },
-                          },
-                        },
-                      ],
-                    ]}
+                    type="Pie"
                   />
                 </div>
-              </Card.Body>
-              <Card.Footer>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  Trauma <i className="fas fa-circle text-danger"></i>
-                  Burn <i className="fas fa-circle text-warning"></i>
-                  
+                  Total Hours <i className="fas fa-circle text-danger"></i>
+                  Total Burn Hours
                 </div>
-              </Card.Footer>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col md="4">
+          <Card>
+              <Card.Header>
+                <Card.Title as="h4">Trauma Hours</Card.Title>
+                <p className="card-category">for All Nurses</p>
+
+              </Card.Header>
+              <Card.Body>
+                <div
+                  className="ct-chart ct-perfect-fourth"
+                  id="chartPreferences"
+                >
+                  <ChartistGraph
+                    data={{
+                      labels: ["80%", "20%"],
+                      series: [80, 20],
+                    }}
+                    type="Pie"
+                  />
+                </div>
+                <div className="legend">
+                  <i className="fas fa-circle text-info"></i>
+                  Total Hours <i className="fas fa-circle text-danger"></i>
+                  Total Burn Hours
+                </div>
+              </Card.Body>
             </Card>
           </Col>
           <Col md="4">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Total Hours</Card.Title>
+                <Card.Title as="h4">Trauma Hours</Card.Title>
+                <p className="card-category">for All Nurses</p>
+
               </Card.Header>
               <Card.Body>
                 <div
@@ -125,7 +112,7 @@ function Dashboard() {
           <Col md="12">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">2020 Hours</Card.Title>
+                <Card.Title as="h4">Yearly Hours</Card.Title>
                 <p className="card-category">All hours including Burn</p>
               </Card.Header>
               <Card.Body>
