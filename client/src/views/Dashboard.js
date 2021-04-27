@@ -36,15 +36,15 @@ function Dashboard() {
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["80%", "20%"],
-                      series: [80, 20],
+                      labels: ["15%", "25%" , "40%", "20%"],
+                      series: [15, 25, 40, 20],
                     }}
                     type="Pie"
                   />
                 </div>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  Total Hours <i className="fas fa-circle text-danger"></i>
+                  Total Hours <i className="fas fa-circle text-success"></i>
                   Total Burn Hours
                 </div>
               </Card.Body>
@@ -65,15 +65,15 @@ function Dashboard() {
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["80%", "20%"],
-                      series: [80, 20],
+                      labels: ["60%", "20%","20%"],
+                      series: [60,20,20],
                     }}
                     type="Pie"
                   />
                 </div>
                 <div className="legend">
-                  <i className="fas fa-circle text-info"></i>
-                  Total Hours <i className="fas fa-circle text-danger"></i>
+                  <i className="fas fa-circle text-primary"></i>
+                  Total Hours <i className="fas fa-circle text-warning"></i>
                   Total Burn Hours
                 </div>
               </Card.Body>
