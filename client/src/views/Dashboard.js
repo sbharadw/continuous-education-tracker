@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import API from "../utils/API";
 import ChartistGraph from "react-chartist";
 // react-bootstrap components
 import {
@@ -16,7 +18,40 @@ import {
   Tooltip,
 } from "react-bootstrap";
 
+
 function Dashboard() {
+
+
+const { user } = useAuth0();
+const {picture, email, sub } = user;
+
+const id = sub
+
+  //Autopopulates fields and uses the existence of a res file to tell weather or not user info has previously be submitted
+    useEffect(() => {
+      API.getUsers()
+        .then(res => {
+          console.log("GOT IT!!!!!!!!!!!!!!!!!!!")
+          console.log(res)
+          populateFields(res)
+          handleDisable(res)
+        })
+        .catch(err => console.log(err));
+    }, [])
+
+
+    //set initial state for formObject
+  const [pieChart, setPieChart] = useState({
+    totalhours: "",
+    totalburnhours: "",
+  })
+
+
+
+
+
+
+
 
   return (
     <>
