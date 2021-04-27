@@ -45,10 +45,13 @@ function TableList() {
       .catch(err => console.log(err));
   }
 
+  
+
   if(nurseUnit !== ""){
     populateList(nurseUnit);
   }
 
+  
   function RenderList(nList) {
 
     console.log("RENDERING")
@@ -75,6 +78,7 @@ function TableList() {
 
 
   console.log(nurseList.list);
+
 
   return (
     <>
