@@ -49,28 +49,35 @@ function TableList() {
     populateList(nurseUnit);
   }
 
-  function RenderList(nList) {
+  function RenderList(props, nList) {
 
+    super(props);
     console.log("RENDERING")
 
-    const items = []
+    this.state = nList
 
-    const ListItems = (nList) =>{for(let i=0;i<nList.length;i++){
-      console.log("for loop reached")
-      console.log(`${nList[i].firstname} ${nList[i].lastname}`);
+    return(
+      <>
 
-      const item = <th>{ `${nList[i].firstname} ${nList[i].lastname}` }</th>
-      items.push(item);
+      {this.state.nList.map((person, index) => {
+        <tr key={ index }>
+          <th>1</th>
+          <th>{ person.firstname } { person.lastname }</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
 
-    }
+      }
+      )}
+
+      </>
+    );
   };
 
   console.log(items)
   ListItems(nList)
 
-    return(
-      <tr> { items }</tr>
-    );
   }
 
 
