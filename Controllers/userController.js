@@ -8,6 +8,26 @@ findAll: function(req, res) {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
+
+aggregate: function(req, res) {
+
+        db.User
+            .aggregate([
+                {
+                  $addFields: {
+                    totalhours: {$sum: "$info.courseHours"},
+                    totalburnhours:{$sum: "$info.burnHours"},
+                  }
+                },
+              ]).then(dbData => {
+                console.log(dbData)
+                res.json(dbData);
+              })
+              .catch(err => res.status(422).json(err));
+    
+
+},
+
 findById: function(req, res) {
     console.log('PARAMS *************************')
     console.log(req.params)
@@ -17,16 +37,18 @@ findById: function(req, res) {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
+
 findByUnit: function(req, res) {
     console.log('PARAMS *************************')
     console.log(req.params)
-    //Populating info. for individual users
+    //Populating info. for individual users 
     db.User
         .find({unit: req.params.id}, req.body)
         .populate("info")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
+
 create: function(req, res) {
     console.log(req.body)
     db.User
@@ -39,6 +61,7 @@ create: function(req, res) {
         })
         .catch(err => res.status(422).json(err));
     },
+
 update: function(req, res) {
 
     console.log('PARAMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
@@ -49,6 +72,7 @@ update: function(req, res) {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
+
 remove: function(req, res) {
     db.User
         .findById({ subId: req.params.employeeId })
@@ -56,16 +80,5 @@ remove: function(req, res) {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-
-userCHr: function (req, res){
-
-    db.User.find({})
-    .populate("info")
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
-
-}
+   
 };
-
-
-

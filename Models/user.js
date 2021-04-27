@@ -29,10 +29,9 @@ const UserSchema = new Schema({
         trim : true,
         required: true,
     },
-    role: {
-        type: String,
-        trim : true,
-        required: false,
+    assignedhours: {
+        type: Number,
+        required: false 
     },
     email: {
         type: String, 
@@ -54,7 +53,7 @@ const UserSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: "Info",
-            require: true
+            require: false
         }
     ]
 },
@@ -67,5 +66,24 @@ const UserSchema = new Schema({
     }
   });
 
+  UserSchema.virtual("totalhours").get(function () {
+
+    return this.info.reduce((total, info) => {
+      return total + info.courseHours;
+    }, 0);
+  
+  });
+
+  UserSchema.virtual("totalburnhours").get(function () {
+
+    return this.info.reduce((total, info) => {
+      return total + info.burnHours;
+    }, 0);
+  
+  });
+
+ 
+
 const User = mongoose.model("User", UserSchema);
+
 module.exports = User;

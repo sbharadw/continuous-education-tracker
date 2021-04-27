@@ -5,7 +5,7 @@ const userController = require("../../Controllers/userController");
 router.route("/")
   .get(userController.findAll)
   .post(userController.create);
-
+  
 // Matches with "/api/users/:id"
 router
   .route("/:id")
@@ -13,8 +13,10 @@ router
   .put(userController.update)
   .delete(userController.remove);
 
+// Matches with "/api/users//unit/:id"
 router
   .route("/unit/:id")
   .get(userController.findByUnit)
+
 
 module.exports = router;

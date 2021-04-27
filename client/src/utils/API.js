@@ -17,7 +17,7 @@ export default {
     },
     //Gets users by unit name
     getUsersByUnit: function(id) {
-      console.log("STEP 2 ###############################")
+      // console.log("STEP 2 ###############################")
       console.log(id)
         return axios.get(`/api/users/unit/${id}`);
     },
@@ -36,6 +36,7 @@ export default {
       // console.log(userData)
       return axios.put("/api/users/" + id, userData);
     },
+  
 
     /*------------------ Course hours routes ----------------------------- */
                 //references info model + infoController
@@ -56,4 +57,6 @@ export default {
     saveCourse: function(userData) {
         return axios.post("/api/info", userData);
     }
+    
 };
+

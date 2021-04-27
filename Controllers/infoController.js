@@ -15,9 +15,13 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function({ body }, res) {
+
+        console.log(`Body ********************`)
+        console.log(body)
+        console.log(`Body ********************`)
         db.Info
             .create(body)
-            .then(({ _id }) => db.User.findOneAndUpdate({}, { $push: { info: _id } }, { new: true }))
+            .then(({ _id, subId }) => db.User.findOneAndUpdate({subId: subId}, { $push: { info: _id } }, { new: true }))
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
