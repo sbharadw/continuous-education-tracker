@@ -32,9 +32,13 @@ const id = sub
       API.getUsers()
         .then(res => {
           console.log("GOT IT!!!!!!!!!!!!!!!!!!!")
-          console.log(res)
-          populateFields(res)
-          handleDisable(res)
+          const allUsers = res.data
+          console.log(allUsers)
+          totalUserTotalHours(allUsers)
+          return function cleanup() {
+            API.getUsers()
+        }
+
         })
         .catch(err => console.log(err));
     }, [])
@@ -47,10 +51,33 @@ const id = sub
   })
 
 
+  function tohours(item){
+    return item.totalhours;
+    }
+
+  function bhours(item){
+      return item.totalburnhours;
+      }
+
+  function sum(prev, next){
+      return prev + next;
+      }
 
 
+function totalUserTotalHours(allUsers) {
 
+let total_totalhours = allUsers.map(tohours).reduce(sum);
+let total_totalburnhours = allUsers.map(bhours).reduce(sum);
 
+setPieChart({
+  totalhours: total_totalhours,
+  totalburnhours: total_totalburnhours,
+  })
+
+}
+
+console.log(`This is piechart info!!!!!!!######*******!!!!!!`)
+console.log(pieChart)
 
 
   return (
@@ -147,8 +174,8 @@ const id = sub
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["80%", "20%"],
-                      series: [80, 20],
+                      labels: [`TH: ${pieChart.totalhours}`, `TBH: ${pieChart.totalburnhours}`],
+                      series: [pieChart.totalhours, pieChart.totalburnhours],
                     }}
                     type="Pie"
                   />
