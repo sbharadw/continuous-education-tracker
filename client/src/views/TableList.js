@@ -19,11 +19,13 @@ function TableList() {
   //User authentification ref and destructure
   const { user } = useAuth0();
   const {picture, email, sub } = user;
+  const id = sub;
   const [searchTerm, setSearchTerm] = useState({nurseUnit: "",})
   const [nurseList, setNurseList] = useState({})
   const { nurseUnit} = searchTerm
 
 
+  
   function handleSearchTerm(event){
     const { value } = event.target;
     console.log(value)
@@ -37,13 +39,17 @@ function TableList() {
     API.getUsersByUnit(id)
       .then(res => {
         const list = res.data;
+        console.log(`**************************`)
         console.log(res)
+        console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!`)
         setNurseList({list})
         setSearchTerm({nurseUnit: ""})
         RenderList(nurseList.list)
       })
       .catch(err => console.log(err));
   }
+  
+
 
   
 

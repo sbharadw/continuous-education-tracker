@@ -73,7 +73,17 @@ const UserSchema = new Schema({
     }, 0);
   
   });
+
+  UserSchema.virtual("totalburnhours").get(function () {
+
+    return this.info.reduce((total, info) => {
+      return total + info.burnHours;
+    }, 0);
+  
+  });
+
+ 
+
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
-
