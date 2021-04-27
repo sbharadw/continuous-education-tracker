@@ -17,7 +17,7 @@ export default {
     },
     //Gets users by unit name
     getUsersByUnit: function(id) {
-      console.log("STEP 2 ###############################")
+      // console.log("STEP 2 ###############################")
       console.log(id)
         return axios.get(`/api/users/unit/${id}`);
     },
