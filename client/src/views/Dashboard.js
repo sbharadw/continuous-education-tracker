@@ -33,18 +33,18 @@ function Dashboard() {
                   <ChartistGraph
                     data={{
                       labels: [
-                        "January",
-                        "Februrary",
-                        "March",
-                        "April",
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
                         "May",
                         "June",
                         "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec",
                       ],
                       series: [
                         [28, 38, 49, 49, 55, 58, 69, 69, 10, 20, 30, 10, 70],
