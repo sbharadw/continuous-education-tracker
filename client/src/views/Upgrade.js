@@ -21,14 +21,19 @@ function Upgrade() {
 
   //---------------------------start page API scripts----------------------------------------------------------------------------------
 
+  //Assdinging unique Aoth0 user id to a variable to use for API calls by id
+  const id = sub;
+
   const [formObject, setFormObject] = useState({
     courseName: "",
     courseHours: "",
     burnHours: "",
     synopsis: "",
     subId: sub,
+    checked: false
   })
 
+  useEffect
 
 
   // Handles updating component state when the user types into the input field
@@ -56,13 +61,19 @@ function Upgrade() {
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
 
-    // handleCleanInputs();
+     handleCleanInputs();
+     fillOutCards();
   };
 
   //Handles checkbox change
   function handleCheckboxChange(event) {
-    setFormObject({ ...formObject, burnHours: formObject.courseHours });
+    if(formObject.checked===false){
+    setFormObject({ ...formObject, burnHours: formObject.courseHours, checked: true });
     console.log("updating burn hours " + formObject.burnHours);
+    }else {
+      setFormObject({ ...formObject, burnHours: null, checked: false });
+      console.log("removing burn hours when unclicked checkbox " + formObject.burnHours);
+    }
   }
 
   //Filling out the cards with information the user entered
@@ -78,10 +89,30 @@ function Upgrade() {
       courseHours: "",
       burnHours: "",
       synopsis: "",
-      subId: sub,
+      subId: sub
     });
   }
 
+  // Read saved data from database table and update formObject with it to use for filling out the cards
+  function fillOutCards(){
+
+    API.getCourse(id)
+    .then(res => {
+      console.log("GET the course info from database")
+      console.log(res)
+      setFormObject({ 
+        courseName: res.data.courseName,
+        courseHours: res.data.courseHours,
+        burnHours: res.data.burnHours,
+        synopsis: res.data.synopsis,
+         })
+    })
+    .catch(err => console.log(err));
+
+    console.log("form object for cards => " + JSON.stringify(formObject));
+  }
+
+ 
   //---------------------------------End Scripts ---------------------------------------------
 
 
@@ -136,7 +167,7 @@ function Upgrade() {
                   </Row>
 
                   <Row>
-                    <Col className="pr-1" md="10">
+                    <Col className="pr-1" md="11">
                       <Form.Group>
                         <label>Synopsis</label>
                         <Form.Control className="input-lg"
