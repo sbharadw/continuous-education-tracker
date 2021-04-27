@@ -149,14 +149,9 @@ console.log(pieChart)
               <Card.Footer>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  Trauuma <i className="fas fa-circle text-danger"></i>
+                  Trauma <i className="fas fa-circle text-danger"></i>
                   Burn <i className="fas fa-circle text-warning"></i>
                   
-                </div>
-                <hr></hr>
-                <div className="stats">
-                  <i className="fas fa-history"></i>
-                  Updated 3 minutes ago
                 </div>
               </Card.Footer>
             </Card>
@@ -182,13 +177,8 @@ console.log(pieChart)
                 </div>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  Complete <i className="fas fa-circle text-danger"></i>
-                  Incomplete
-                </div>
-                <hr></hr>
-                <div className="stats">
-                  <i className="far fa-clock"></i>
-                  Data sent 2 days ago
+                  Total Hours <i className="fas fa-circle text-danger"></i>
+                  Total Burn Hours
                 </div>
               </Card.Body>
             </Card>
@@ -279,11 +269,6 @@ console.log(pieChart)
                   <i className="fas fa-circle text-info"></i>
                   Trauma  <i className="fas fa-circle text-danger"></i>
                   BURN
-                </div>
-                <hr></hr>
-                <div className="stats">
-                  <i className="fas fa-check"></i>
-                  Hour information certified
                 </div>
               </Card.Footer>
             </Card>
