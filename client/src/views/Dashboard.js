@@ -26,25 +26,25 @@ function Dashboard() {
             <Card>
               <Card.Header>
                 <Card.Title as="h4">Education timeline</Card.Title>
-                <p className="card-category">30 Days performance</p>
+                <p className="card-category">Performance</p>
               </Card.Header>
               <Card.Body>
                 <div className="ct-chart" id="chartHours">
                   <ChartistGraph
                     data={{
                       labels: [
-                        "January",
-                        "Februrary",
-                        "March",
-                        "April",
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
                         "May",
                         "June",
                         "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec",
                       ],
                       series: [
                         [28, 38, 49, 49, 55, 58, 69, 69, 10, 20, 30, 10, 70],
@@ -98,7 +98,6 @@ function Dashboard() {
             <Card>
               <Card.Header>
                 <Card.Title as="h4">Total Hours</Card.Title>
-                <p className="card-category">Last Month Performance</p>
               </Card.Header>
               <Card.Body>
                 <div
@@ -126,7 +125,7 @@ function Dashboard() {
           <Col md="12">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">2017 Hours</Card.Title>
+                <Card.Title as="h4">2020 Hours</Card.Title>
                 <p className="card-category">All hours including Burn</p>
               </Card.Header>
               <Card.Body>
