@@ -192,7 +192,7 @@ function Dashboard() {
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
                   Trauma  <i className="fas fa-circle text-danger"></i>
-                  BURN
+                  Burn
                 </div>
               </Card.Footer>
             </Card>
