@@ -12,6 +12,7 @@ import {
   Col,
   Form
 } from "react-bootstrap";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 function TableList() {
 
@@ -35,9 +36,11 @@ function TableList() {
 
     API.getUsersByUnit(id)
       .then(res => {
+        const list = res.data;
         console.log(res)
-        setNurseList({res})
+        setNurseList({list})
         setSearchTerm({nurseUnit: ""})
+        RenderList(nurseList.list)
       })
       .catch(err => console.log(err));
   }
@@ -49,6 +52,34 @@ function TableList() {
   }
 
   
+  function RenderList(nList) {
+
+    console.log("RENDERING")
+
+    const items = []
+
+    const ListItems = (nList) =>{for(let i=0;i<nList.length;i++){
+      console.log("for loop reached")
+      console.log(`${nList[i].firstname} ${nList[i].lastname}`);
+
+      const item = <th>{ `${nList[i].firstname} ${nList[i].lastname}` }</th>
+      items.push(item);
+
+    }
+  };
+
+  console.log(items)
+  ListItems(nList)
+
+    return(
+      <tr> { items }</tr>
+    );
+  }
+
+
+  console.log(nurseList.list);
+
+
   return (
     <>
       <Container fluid>
@@ -99,6 +130,10 @@ function TableList() {
                       <td>6</td>
                       <td>14</td>
                       <td>5</td>
+                    </tr>
+                    <tr>
+                      <th>
+                      </th>
                     </tr>
                   </tbody>
                 </Table>
