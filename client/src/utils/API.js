@@ -36,6 +36,7 @@ export default {
       // console.log(userData)
       return axios.put("/api/users/" + id, userData);
     },
+  
 
     /*------------------ Course hours routes ----------------------------- */
                 //references info model + infoController
@@ -56,4 +57,6 @@ export default {
     saveCourse: function(userData) {
         return axios.post("/api/info", userData);
     }
+    
 };
+
