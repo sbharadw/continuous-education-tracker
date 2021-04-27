@@ -250,7 +250,7 @@ return (
                 <Row>
                   <Col xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-time-alarm text-danger"></i>
+                      <i className="nc-icon nc-bold text-danger"></i>
                     </div>
                   </Col>
                   <Col xs="7">
