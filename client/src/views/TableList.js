@@ -42,10 +42,13 @@ function TableList() {
       .catch(err => console.log(err));
   }
 
+  
+
   if(nurseUnit !== ""){
     populateList(nurseUnit);
   }
 
+  
   return (
     <>
       <Container fluid>

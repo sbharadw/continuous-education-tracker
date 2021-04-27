@@ -20,7 +20,7 @@ findById: function(req, res) {
 findByUnit: function(req, res) {
     console.log('PARAMS *************************')
     console.log(req.params)
-    //Populating info. for individual users
+    //Populating info. for individual users 
     db.User
         .find({unit: req.params.id}, req.body)
         .populate("info")
@@ -56,15 +56,6 @@ remove: function(req, res) {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-
-userCHr: function (req, res){
-
-    db.User.find({})
-    .populate("info")
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
-
-}
 };
 
 

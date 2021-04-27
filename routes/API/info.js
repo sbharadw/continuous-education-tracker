@@ -13,4 +13,5 @@ router
   .put(infoController.update)
   .delete(infoController.remove);
 
+
 module.exports = router;
