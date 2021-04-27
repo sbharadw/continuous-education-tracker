@@ -1,6 +1,7 @@
 const db = require("../Models");
 // Defining methods for the User
 module.exports = {
+
 findAll: function(req, res) {
     db.User
         .find(req.query)
@@ -19,9 +20,10 @@ findById: function(req, res) {
 findByUnit: function(req, res) {
     console.log('PARAMS *************************')
     console.log(req.params)
-    
+    //Populating info. for individual users
     db.User
         .find({unit: req.params.id}, req.body)
+        .populate("info")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
@@ -64,5 +66,6 @@ userCHr: function (req, res){
 
 }
 };
+
 
 

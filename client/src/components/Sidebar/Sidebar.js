@@ -29,11 +29,7 @@ function Sidebar({ color, image, routes }) {
             if (!prop.redirect)
               return (
                 <li
-                  className={
-                    prop.upgrade
-                      ? "active "
-                      : activeRoute(prop.layout + prop.path)
-                  }
+                 
                   key={key}
                 >
                   <NavLink

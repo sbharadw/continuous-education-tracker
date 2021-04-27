@@ -13,7 +13,6 @@ import {
   Form
 } from "react-bootstrap";
 
-
 function TableList() {
 
   //User authentification ref and destructure
@@ -21,12 +20,12 @@ function TableList() {
   const {picture, email, sub } = user;
   const [searchTerm, setSearchTerm] = useState({nurseUnit: "",})
   const [nurseList, setNurseList] = useState({})
-  
   const { nurseUnit} = searchTerm
 
 
   function handleSearchTerm(event){
     const { value } = event.target;
+    console.log(value)
     setSearchTerm({nurseUnit: value})
   }
 
@@ -46,7 +45,6 @@ function TableList() {
   if(nurseUnit !== ""){
     populateList(nurseUnit);
   }
-
 
   return (
     <>
