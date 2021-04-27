@@ -61,8 +61,11 @@ function Upgrade() {
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
 
-     handleCleanInputs();
-     fillOutCards();
+    setFormObject({ ...formObject, checked: false });
+    console.log("set checked falue to false => " + formObject.checked);
+    // $('input[type="checkbox"]').removeAttr("checked");
+    //  handleCleanInputs();
+      fillOutCards();
   };
 
   //Handles checkbox change
@@ -97,16 +100,21 @@ function Upgrade() {
   function fillOutCards(){
     console.log("GET the course info from database with id => " + id);
     
-    API.getCourse(id)
+    API.getCourses()
     .then(res => {
       console.log(res)
+      
+      var index = res.data.length - 1;
+      console.log("index is " + index);
+      
       setFormObject({ 
-        courseName: res.data.courseName,
-        courseHours: res.data.courseHours,
-        burnHours: res.data.burnHours,
-        synopsis: res.data.synopsis,
+        courseName: res.data[index].courseName,
+        courseHours: res.data[index].courseHours,
+        burnHours: res.data[index].burnHours,
+        synopsis: res.data[index].synopsis,
         subId: sub
          })
+
     })
     .catch(err => console.log(err));
 
@@ -154,9 +162,10 @@ function Upgrade() {
                         ></Form.Control>
                         <Form.Check className="mb-0 pl-1">
                           <Form.Check.Label>
-                            <Form.Check.Input
+                            <Form.Check.Input className="burnHoursCheckBox"
                               defaultValue=""
                               type="checkbox"
+                              value="unchecked"
                               onChange={handleCheckboxChange}
                             ></Form.Check.Input>
                             <span className="form-check-sign"></span>
