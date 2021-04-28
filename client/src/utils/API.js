@@ -41,7 +41,7 @@ export default {
       console.log(id)
       console.log(userData)
 
-      return axios.put("/api/users/eid/:id")
+      return axios.put("/api/users/eid/" + id, userData)
     },
   
 

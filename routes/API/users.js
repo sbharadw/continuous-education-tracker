@@ -20,5 +20,5 @@ router
 
 router
   .route("/eid/:id")
-  .put(userController.findByEmployeeId)
+  .put(userController.updateByUnit)
 module.exports = router;

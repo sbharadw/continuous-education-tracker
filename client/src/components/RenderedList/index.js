@@ -15,56 +15,32 @@ function RenderedList({ data }){
     const { user } = useAuth0();
     const { sub } = user;
 
-    const[assignedHours, setAssignHours] = useState({hours: null})
-
-    function handleHoursAssign(){
-        const{value} = event.target;
-        setAssignHours({...assignedHours, hours: value})
-        console.log(assignedHours)
-    }
-    function updateHours(id){
-        console.log("function called")
-
-        API.updateUser(id, {assignedhours: assignedHours.hours})
-
-
-
-        .then((res)=>{
-            console.log(res)
-            console.log(`HOURS UPDATE ${res}`)
-        })
-        .then(console.log(`sending updated object`))
-        .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
-    }
-
+    const[selectedEmployee, setSelectedEmployee] = useState({
+        eId: "",
+        sId: ""
+    })
 
     return(
         data.map((employee) => (
-            <tr onKeyDown={() => updateHours(employee.subId)}>
+
+            <tr onClick={() => {
+                console.log(employee.subId) 
+                setSelectedEmployee({
+                    eId: employee.employeeId,
+                    sId: employee.subId
+                })
+                console.log(selectedEmployee)
+            }
+            }>
             <ListItem 
-                key={employee._Id}
+                key={employee.subId}
                 onClick={() => console.log(this.id)}
                 id={employee.employeeId}
                 name={ `${employee.firstname} ${employee.lastname}`}
                 burnHours={employee.totalburnhours}
                 totalHours={employee.totalhours}
-                assigned={
-                    <>
-                        <Form.Group>
-                            <Form.Control
-                            placeholder="  Assign"
-                            type="number" min="0"
-                            onChange={handleHoursAssign}
-                            value={assignedHours.hours}
-                            name="hours"
-                            style={{width: "20%", padding:0, margin:0}}
-                            //   disabled={ disable }
-                            ></Form.Control>
-                        </Form.Group>   
-                    </>
-                }>
+                needed={employee.assignedhours}>
             </ListItem>
-
 
             </tr>
         ))
