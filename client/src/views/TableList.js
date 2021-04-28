@@ -115,12 +115,12 @@ function TableList() {
                       <>
                         <Form.Group>
                             <Form.Control
-                            placeholder="  Assign Hours  "
+                            placeholder="  Assign Hours by Unit  "
                             type="number" min="0"
                             onChange={handleHoursAssign}
                             value={assignedHours.hours}
                             name="hours"
-                            style={{width: "50%", padding:0, margin:0, textAlign:"center"}}
+                            style={{width: "80%", padding:0, margin:0, textAlign:"center"}}
                             ></Form.Control>
                         </Form.Group>   
                       </>

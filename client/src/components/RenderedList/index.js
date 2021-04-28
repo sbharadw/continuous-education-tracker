@@ -20,6 +20,16 @@ function RenderedList({ data }){
         sId: ""
     })
 
+    const individualSearch = (id) => {
+        API.getUser(id)
+            .then(res => {
+                console.log(res)
+                const list = res.data
+                data = [list]
+                console.log(data)
+            })
+    }
+
     return(
         data.map((employee) => (
 
@@ -30,6 +40,12 @@ function RenderedList({ data }){
                     sId: employee.subId
                 })
                 console.log(selectedEmployee)
+                individualSearch(employee.subId)
+                const aNumber = Number(window.prompt(`Edit ${employee.firstname} ${employee.lastname}'s assigned hours`, ""));
+                aNumber
+                
+                API.updateUser(employee.subId, {assignedhours: aNumber})
+
             }
             }>
             <ListItem 
