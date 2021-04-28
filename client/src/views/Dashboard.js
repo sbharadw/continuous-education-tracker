@@ -31,7 +31,7 @@ function Dashboard() {
               </Card.Header>
               <Card.Body>
                 <div
-                  className="ct-chart ct-perfect-fourth"
+                  className="ct-slice-donut"
                   id="chartPreferences"
                 >
                   <ChartistGraph
@@ -39,7 +39,16 @@ function Dashboard() {
                       labels: ["15%", "25%" , "40%", "20%"],
                       series: [15, 25, 40, 20],
                     }}
+            
                     type="Pie"
+                    options={{
+                      donut: true,
+                      donutWidth: 60,
+                      donutSolid: true,
+                      startAngle: 270,
+                      showLabel: true
+                    }}
+                  
                   />
                 </div>
                 <div className="legend">
@@ -61,7 +70,6 @@ function Dashboard() {
               <Card.Body>
                 <div
                   className="ct-chart ct-perfect-fourth"
-                  id="chartPreferences"
                 >
                   <ChartistGraph
                     data={{
@@ -69,6 +77,15 @@ function Dashboard() {
                       series: [60,20,20],
                     }}
                     type="Pie"
+                    options={{
+                      donut: true,
+                      donutWidth: 60,
+                      donutSolid: true,
+                      startAngle: 270,
+                      total: 200,
+                      showLabel: true
+                    }}
+                  
                   />
                 </div>
                 <div className="legend">
