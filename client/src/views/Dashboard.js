@@ -44,7 +44,7 @@ const id = sub
     }, [])
 
 
-    //set initial state for formObject
+    //set initial state for piechart
   const [pieChart, setPieChart] = useState({
     totalhours: "",
     totalburnhours: "",
@@ -75,6 +75,8 @@ setPieChart({
   })
 
 }
+
+
 
 console.log(`This is piechart info!!!!!!!######*******!!!!!!`)
 console.log(pieChart)
@@ -144,7 +146,7 @@ console.log(pieChart)
           <Col md="4">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Trauma Hours</Card.Title>
+                <Card.Title as="h4">{`Trauma Hours: ${pieChart.totalhours - pieChart.totalburnhours}`}</Card.Title>
                 <p className="card-category">for All Nurses</p>
 
               </Card.Header>
