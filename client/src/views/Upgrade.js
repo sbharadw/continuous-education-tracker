@@ -21,7 +21,7 @@ function Upgrade() {
 
   //---------------------------start page API scripts----------------------------------------------------------------------------------
 
-  //Assdinging unique Aoth0 user id to a variable to use for API calls by id
+  //Assigning unique Aoth0 user id to a variable to use for API calls by id
   const id = sub;
 
   const [formObject, setFormObject] = useState({
@@ -32,9 +32,6 @@ function Upgrade() {
     subId: sub,
     checked: false
   })
-
-  // useEffect
-
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -59,13 +56,11 @@ function Upgrade() {
       })
         .then(console.log(`sending object: ${JSON.stringify(formObject)}`))
         .then(handleCleanInputs())
-        // .then(fillOutCards())
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
-        
       }
 
-    //  handleCleanInputs();
-    //  fillOutCards();
+       alert("Your course is being submitted!")
+      //in case we want to read data from database to update the cards call fillOutCards();
   };
 
   //Handles checkbox change
@@ -316,9 +311,9 @@ function Upgrade() {
           </Col>
 
         </Row>
-
-
+        
       </Container>
+      
     </>
   );
 }
