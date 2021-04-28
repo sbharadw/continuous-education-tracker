@@ -97,7 +97,7 @@ function TableList() {
                     </tr>
                   </thead>
                   <tbody>
-                    <RenderedList data={ data }/>
+                    <RenderedList data={data}/>
                   </tbody>
                 </Table>
               </Card.Body>

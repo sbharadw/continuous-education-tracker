@@ -17,7 +17,7 @@ const UserSchema = new Schema({
     employeeId: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     firstname: {
         type: String,
@@ -31,13 +31,14 @@ const UserSchema = new Schema({
     },
     assignedhours: {
         type: Number,
-        required: false 
+        required: false,
+        default: 0, 
     },
     email: {
         type: String, 
         trim : true,
         required: true,
-        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+        match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
     },
     hospital: {
         type :String,
@@ -53,16 +54,16 @@ const UserSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: "Info",
-            require: false
+            require: false,
         }
     ]
 },
 {
     toObject: {
-    virtuals: true
+    virtuals: true,
     },
     toJSON: {
-    virtuals: true 
+    virtuals: true, 
     }
   });
 

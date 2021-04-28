@@ -48,7 +48,7 @@ const id = sub
   const [pieChart, setPieChart] = useState({
     totalhours: "",
     totalburnhours: "",
-    other: "",
+    totalassignedhours: "",
   })
 
 
@@ -59,6 +59,11 @@ const id = sub
   function bhours(item){
       return item.totalburnhours;
       }
+  
+  function assignedhours(item){
+       return item.assignedhours
+
+  }
 
   function sum(prev, next){
       return prev + next;
@@ -67,17 +72,23 @@ const id = sub
 
 function totalUserTotalHours(allUsers) {
 
+
+
 let total_totalhours = allUsers.map(tohours).reduce(sum);
 let total_totalburnhours = allUsers.map(bhours).reduce(sum);
+let total_assignedhours = allUsers.map(assignedhours).reduce(sum);
 
 setPieChart({
   totalhours: total_totalhours,
   totalburnhours: total_totalburnhours,
+  totalassignedhours: total_assignedhours,
   })
 
 }
 
 let other = pieChart.totalhours - pieChart.totalburnhours;
+let totalremaininghours = pieChart.totalassignedhours - pieChart.totalhours;
+
 
 
 console.log(`This is piechart info!!!!!!!######*******!!!!!!`)
@@ -167,8 +178,8 @@ console.log(pieChart)
                 >
                   <ChartistGraph
                     data={{
-                      labels: [`50%`, `40%`],
-                      series: [50, 40],
+                      labels: [`${pieChart.totalassignedhours} hrs`, `${totalremaininghours} hrs`],
+                      series: [pieChart.totalassignedhours, totalremaininghours],
                     }}
             
                     type="Pie"
