@@ -18,9 +18,10 @@ function TableList() {
   //User authentification ref and destructure
   const { user } = useAuth0();
   const [searchTerm, setSearchTerm] = useState({nurseUnit: "",})
-  const [data, setData] = useState({})
+  const [data, setData] = useState([])
   const { nurseUnit} = searchTerm
-  
+
+
   function handleSearchTerm(event){
     const { value } = event.target;
     console.log(value)
@@ -35,7 +36,7 @@ function TableList() {
       .then(res => {
         console.log(res.data)
         const list = res.data;
-        console.log(`SET DATA TO::: ${list}`)
+        console.log(list)
         setData(list)
         setSearchTerm({nurseUnit: ""})
       })
@@ -46,9 +47,11 @@ function TableList() {
     populateList(nurseUnit);
   }
 
-  console.log(`**************${data}**********************`)
+  console.log(data)
 
   // const filteredEmployees = data.filter(employee => employee.name.toLowerCase().startsWith(nurseUnit.toLowerCase()));
+
+
 
   return (
     <>
@@ -94,14 +97,7 @@ function TableList() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Alexander Flemming</td>
-                      <td>6</td>
-                      <td>14</td>
-                      <td>5</td>
-                    </tr>
-                    {/* <RenderedList data={ data }/> */}
+                    <RenderedList data={ data }/>
                   </tbody>
                 </Table>
               </Card.Body>
