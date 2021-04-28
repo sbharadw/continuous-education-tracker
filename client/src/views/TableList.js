@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, setState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
 import API from "../utils/API";
+import RenderedList from "../components/RenderedList/index"
 
 // react-bootstrap components
 import {
@@ -12,19 +12,14 @@ import {
   Col,
   Form
 } from "react-bootstrap";
-import { propTypes } from "react-bootstrap/esm/Image";
 
 function TableList() {
 
   //User authentification ref and destructure
   const { user } = useAuth0();
-  const {picture, email, sub } = user;
-  const id = sub;
   const [searchTerm, setSearchTerm] = useState({nurseUnit: "",})
-  const [nurseList, setNurseList] = useState({})
+  const [data, setData] = useState({})
   const { nurseUnit} = searchTerm
-
-
   
   function handleSearchTerm(event){
     const { value } = event.target;
@@ -38,53 +33,22 @@ function TableList() {
 
     API.getUsersByUnit(id)
       .then(res => {
+        console.log(res.data)
         const list = res.data;
-        console.log(`**************************`)
-        console.log(res)
-        console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!`)
-        setNurseList({list})
+        console.log(`SET DATA TO::: ${list}`)
+        setData(list)
         setSearchTerm({nurseUnit: ""})
-        RenderList(nurseList.list)
       })
       .catch(err => console.log(err));
   }
-  
-
-
-  
 
   if(nurseUnit !== ""){
     populateList(nurseUnit);
   }
 
-  
-  function RenderList(nList) {
+  console.log(`**************${data}**********************`)
 
-    console.log("RENDERING")
-
-    const items = []
-
-    const ListItems = (nList) =>{for(let i=0;i<nList.length;i++){
-      console.log("for loop reached")
-      console.log(`${nList[i].firstname} ${nList[i].lastname}`);
-
-      const item = <th>{ `${nList[i].firstname} ${nList[i].lastname}` }</th>
-      items.push(item);
-
-    }
-  };
-
-  console.log(items)
-  ListItems(nList)
-
-    return(
-      <tr> { items }</tr>
-    );
-  }
-
-
-  console.log(nurseList.list);
-
+  // const filteredEmployees = data.filter(employee => employee.name.toLowerCase().startsWith(nurseUnit.toLowerCase()));
 
   return (
     <>
@@ -137,10 +101,7 @@ function TableList() {
                       <td>14</td>
                       <td>5</td>
                     </tr>
-                    <tr>
-                      <th>
-                      </th>
-                    </tr>
+                    {/* <RenderedList data={ data }/> */}
                   </tbody>
                 </Table>
               </Card.Body>

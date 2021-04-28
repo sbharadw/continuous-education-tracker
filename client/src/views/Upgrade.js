@@ -167,7 +167,7 @@ function Upgrade() {
                         <label>Hours</label>
                         <Form.Control
                           placeholder="Hours"
-                          type="number"
+                          type="number"   min="0"
                           onChange={handleInputChange}
                           value={formObject.courseHours}
                           name="courseHours"
