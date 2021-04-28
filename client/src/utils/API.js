@@ -36,6 +36,13 @@ export default {
       // console.log(userData)
       return axios.put("/api/users/" + id, userData);
     },
+
+    updateUserHours: function(id, userData){
+      console.log(id)
+      console.log(userData)
+
+      return axios.put("/api/users/eid/:id")
+    },
   
 
     /*------------------ Course hours routes ----------------------------- */

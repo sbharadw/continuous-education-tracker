@@ -21,7 +21,7 @@ function Upgrade() {
 
   //---------------------------start page API scripts----------------------------------------------------------------------------------
 
-  //Assdinging unique Aoth0 user id to a variable to use for API calls by id
+  //Assigning unique Aoth0 user id to a variable to use for API calls by id
   const id = sub;
 
   const [formObject, setFormObject] = useState({
@@ -32,9 +32,6 @@ function Upgrade() {
     subId: sub,
     checked: false
   })
-
-  useEffect
-
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -58,11 +55,12 @@ function Upgrade() {
         subId: formObject.subId
       })
         .then(console.log(`sending object: ${JSON.stringify(formObject)}`))
+        .then(handleCleanInputs())
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
-    }
+      }
 
-     handleCleanInputs();
-     fillOutCards();
+       alert("Your course is being submitted!")
+      //in case we want to read data from database to update the cards call fillOutCards();
   };
 
   //Handles checkbox change
@@ -89,23 +87,30 @@ function Upgrade() {
       courseHours: "",
       burnHours: "",
       synopsis: "",
-      subId: sub
+      subId: sub,
+      checked:false
     });
   }
 
   // Read saved data from database table and update formObject with it to use for filling out the cards
   function fillOutCards(){
-
-    API.getCourse(id)
+    console.log("GET the course info from database with id => " + id);
+    
+    API.getCourses()
     .then(res => {
-      console.log("GET the course info from database")
       console.log(res)
+      
+      var index = res.data.length - 1;
+      console.log("index is " + index);
+      
       setFormObject({ 
-        courseName: res.data.courseName,
-        courseHours: res.data.courseHours,
-        burnHours: res.data.burnHours,
-        synopsis: res.data.synopsis,
+        courseName: res.data[index].courseName,
+        courseHours: res.data[index].courseHours,
+        burnHours: res.data[index].burnHours,
+        synopsis: res.data[index].synopsis,
+        subId: sub
          })
+
     })
     .catch(err => console.log(err));
 
@@ -154,8 +159,10 @@ function Upgrade() {
                         <Form.Check className="mb-0 pl-1">
                           <Form.Check.Label>
                             <Form.Check.Input
-                              defaultValue=""
+                              // defaultValue=""
+                              checked={formObject.checked}
                               type="checkbox"
+                             
                               onChange={handleCheckboxChange}
                             ></Form.Check.Input>
                             <span className="form-check-sign"></span>
@@ -304,9 +311,9 @@ function Upgrade() {
           </Col>
 
         </Row>
-
-
+        
       </Container>
+      
     </>
   );
 }
