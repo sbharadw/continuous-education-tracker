@@ -84,59 +84,39 @@ console.log(pieChart)
     <>
       <Container fluid>
         <Row>
+
+
           <Col md="4">
           <Card>
               <Card.Header>
-                <Card.Title as="h4">Trauma Hours</Card.Title>
+                <Card.Title as="h4">Total Hours</Card.Title>
                 <p className="card-category">for All Nurses</p>
 
               </Card.Header>
               <Card.Body>
                 <div
                   className="ct-chart ct-perfect-fourth"
-                  id="chartPreferences"
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["15%", "25%" , "40%", "20%"],
-                      series: [15, 25, 40, 20],
+                      labels: ["60%"],
+                      series: [60],
                     }}
                     type="Pie"
+                    options={{
+                      donut: true,
+                      donutWidth: 60,
+                      donutSolid: true,
+                      startAngle: 270,
+                      total: 200,
+                      showLabel: true
+                    }}
+                  
                   />
                 </div>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  Total Hours <i className="fas fa-circle text-success"></i>
-                  Total Burn Hours
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col md="4">
-          <Card>
-              <Card.Header>
-                <Card.Title as="h4">Trauma Hours</Card.Title>
-                <p className="card-category">for All Nurses</p>
-
-              </Card.Header>
-              <Card.Body>
-                <div
-                  className="ct-chart ct-perfect-fourth"
-                  id="chartPreferences"
-                >
-                  <ChartistGraph
-                    data={{
-                      labels: ["60%", "20%","20%"],
-                      series: [60,20,20],
-                    }}
-                    type="Pie"
-                  />
-                </div>
-                <div className="legend">
-                  <i className="fas fa-circle text-primary"></i>
-                  Total Hours <i className="fas fa-circle text-warning"></i>
-                  Total Burn Hours
+                  Total Hours 
                 </div>
               </Card.Body>
             </Card>
@@ -144,7 +124,7 @@ console.log(pieChart)
           <Col md="4">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Trauma Hours</Card.Title>
+                <Card.Title as="h4">Burn Hours</Card.Title>
                 <p className="card-category">for All Nurses</p>
 
               </Card.Header>
@@ -155,16 +135,53 @@ console.log(pieChart)
                 >
                   <ChartistGraph
                     data={{
-                      labels: [`TH: ${pieChart.totalhours}`, `TBH: ${pieChart.totalburnhours}`],
-                      series: [pieChart.totalhours, pieChart.totalburnhours],
+                      labels: ["80%", "20%"],
+                      series: [80, 20],
                     }}
                     type="Pie"
                   />
                 </div>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  Total Hours <i className="fas fa-circle text-danger"></i>
+                  Others <i className="fas fa-circle text-danger"></i>
                   Total Burn Hours
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md="4">
+          <Card>
+              <Card.Header>
+                <Card.Title as="h4">Assigned vs Remaining Hours</Card.Title>
+                <p className="card-category">for All Nurses</p>
+
+              </Card.Header>
+              <Card.Body>
+                <div
+                  className="ct-slice-donut"
+                  id="chartPreferences"
+                >
+                  <ChartistGraph
+                    data={{
+                      labels: [`TH: ${pieChart.totalhours}`, `TBH: ${pieChart.totalburnhours}`],
+                      series: [pieChart.totalhours, pieChart.totalburnhours],
+                    }}
+            
+                    type="Pie"
+                    options={{
+                      donut: true,
+                      donutWidth: 60,
+                      donutSolid: true,
+                      startAngle: 270,
+                      showLabel: true
+                    }}
+                  
+                  />
+                </div>
+                <div className="legend">
+                  <i className="fas fa-circle text-info"></i>
+                  Assigned<i className="fas fa-circle text-danger"></i>
+                  Remaining
                 </div>
               </Card.Body>
             </Card>
@@ -254,7 +271,7 @@ console.log(pieChart)
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
                   Trauma  <i className="fas fa-circle text-danger"></i>
-                  BURN
+                  Burn
                 </div>
               </Card.Footer>
             </Card>
