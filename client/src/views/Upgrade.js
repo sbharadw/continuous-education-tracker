@@ -59,7 +59,7 @@ function Upgrade() {
       })
         .then(console.log(`sending object: ${JSON.stringify(formObject)}`))
         .then(handleCleanInputs())
-        .then(fillOutCards())
+        // .then(fillOutCards())
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
         
       }
@@ -92,7 +92,8 @@ function Upgrade() {
       courseHours: "",
       burnHours: "",
       synopsis: "",
-      subId: sub
+      subId: sub,
+      checked:false
     });
   }
 
@@ -166,7 +167,7 @@ function Upgrade() {
                               // defaultValue=""
                               checked={formObject.checked}
                               type="checkbox"
-                              value="unchecked"
+                             
                               onChange={handleCheckboxChange}
                             ></Form.Check.Input>
                             <span className="form-check-sign"></span>
