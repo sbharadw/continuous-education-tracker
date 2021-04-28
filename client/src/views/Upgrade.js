@@ -59,14 +59,25 @@ function Upgrade() {
       })
         .then(console.log(`sending object: ${JSON.stringify(formObject)}`))
         .then(handleCleanInputs())
-        // .then(fillOutCards())
+        .then(notify)
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
-        
       }
 
-    //  handleCleanInputs();
-    //  fillOutCards();
+       alert("Your course is being submitted!")
+      //in case we want to read data from database to update the cards call fillOutCards();
   };
+
+  function notify(message, type = 'danger', icon = 'info-circle', duration = 3000) {
+    console.log("calling notify function");
+    const alert = Object.assign(document.createElement('sl-alert'), {
+        type: type,
+        closable: true,
+        duration: duration,
+        innerHTML: `<sl-icon name="${icon}" slot="icon"></sl-icon> ${escapeHtml(message)}`
+    });
+    document.body.append(alert);
+    return alert.toast();
+}
 
   //Handles checkbox change
   function handleCheckboxChange(event) {
@@ -319,6 +330,7 @@ function Upgrade() {
 
 
       </Container>
+      
     </>
   );
 }
