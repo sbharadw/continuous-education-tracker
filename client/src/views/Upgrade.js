@@ -21,7 +21,7 @@ function Upgrade() {
 
   //---------------------------start page API scripts----------------------------------------------------------------------------------
 
-  //Assdinging unique Aoth0 user id to a variable to use for API calls by id
+  //Assigning unique Aoth0 user id to a variable to use for API calls by id
   const id = sub;
 
   const [formObject, setFormObject] = useState({
@@ -32,9 +32,6 @@ function Upgrade() {
     subId: sub,
     checked: false
   })
-
-  // useEffect
-
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -59,25 +56,12 @@ function Upgrade() {
       })
         .then(console.log(`sending object: ${JSON.stringify(formObject)}`))
         .then(handleCleanInputs())
-        .then(notify)
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
       }
 
        alert("Your course is being submitted!")
       //in case we want to read data from database to update the cards call fillOutCards();
   };
-
-  function notify(message, type = 'danger', icon = 'info-circle', duration = 3000) {
-    console.log("calling notify function");
-    const alert = Object.assign(document.createElement('sl-alert'), {
-        type: type,
-        closable: true,
-        duration: duration,
-        innerHTML: `<sl-icon name="${icon}" slot="icon"></sl-icon> ${escapeHtml(message)}`
-    });
-    document.body.append(alert);
-    return alert.toast();
-}
 
   //Handles checkbox change
   function handleCheckboxChange(event) {
@@ -327,8 +311,7 @@ function Upgrade() {
           </Col>
 
         </Row>
-
-
+        
       </Container>
       
     </>
