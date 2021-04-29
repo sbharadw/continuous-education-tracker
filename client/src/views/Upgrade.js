@@ -59,7 +59,7 @@ function Upgrade() {
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
       }
 
-       alert("Your course is being submitted!")
+       alert("Your hours are submitted!")
       //in case we want to read data from database to update the cards call fillOutCards();
   };
 
