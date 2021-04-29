@@ -13,7 +13,6 @@
     "chartist": "^0.10.1",
     "file-saver": "^2.0.1",
     "gulp": "^4.0.2",
-    "gulp-append-prepend": "^1.0.8",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-chartist": "^0.14.3",
@@ -52,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "gulp-append-prepend": "^1.0.9",
     "node-sass": "^5.0.0"
   }
 }
