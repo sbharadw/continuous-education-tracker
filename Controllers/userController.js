@@ -39,12 +39,13 @@ findById: function(req, res) {
         .catch(err => res.status(422).json(err));
     },
 
-findByEmployeeId: function(req, res) {
+updateByUnit: function(req, res) {
     console.log('PARAMS *************************')
     console.log(req.params)
+    console.log(req.body)
     
     db.User
-        .findOne({employeeId: req.params.id}, req.body)
+        .updateMany({unit: req.params.id}, req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },

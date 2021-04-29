@@ -17,10 +17,10 @@ function TableList() {
 
   //User authentification ref and destructure
   const { user } = useAuth0();
-  const [searchTerm, setSearchTerm] = useState({nurseUnit: "",})
+  const [searchTerm, setSearchTerm] = useState({nurseUnit: "", renderedUnit: ""})
   const [data, setData] = useState([])
   const { nurseUnit} = searchTerm
-
+  const unitHours = searchTerm.renderedUnit;
 
   function handleSearchTerm(event){
     const { value } = event.target;
@@ -38,8 +38,13 @@ function TableList() {
         const list = res.data;
         console.log(list)
         setData(list)
-        setSearchTerm({nurseUnit: ""})
-      })
+        console.log(searchTerm)
+      }).then(
+        setSearchTerm({
+          renderedUnit: id,
+          nurseUnit: ""
+        })
+      )
       .catch(err => console.log(err));
   }
 
@@ -51,6 +56,29 @@ function TableList() {
 
   // const filteredEmployees = data.filter(employee => employee.name.toLowerCase().startsWith(nurseUnit.toLowerCase()));
 
+
+
+  const[assignedHours, setAssignHours] = useState({hours: null})
+
+
+  function handleHoursAssign(){
+      const{value} = event.target;
+      setAssignHours({...assignedHours, hours: value})
+      console.log(unitHours)
+      updateHoursByUnit(unitHours)
+  }
+  function updateHoursByUnit(id){
+      console.log("function called")
+
+      API.updateUserHours(id, {assignedhours: assignedHours.hours})
+
+      .then((res)=>{
+          console.log(res)
+          console.log(`HOURS UPDATE ${res}`)
+      })
+      .then(console.log(`sending updated object`))
+      .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
+  }
 
 
   return (
@@ -84,6 +112,18 @@ function TableList() {
                           <option>Transport</option>
                         </Form.Control>
                       </Form.Group>
+                      <>
+                        <Form.Group>
+                            <Form.Control
+                            placeholder="  Assign Hours by Unit  "
+                            type="number" min="0"
+                            onChange={handleHoursAssign}
+                            value={assignedHours.hours}
+                            name="hours"
+                            style={{width: "80%", padding:0, margin:0, textAlign:"center"}}
+                            ></Form.Control>
+                        </Form.Group>   
+                      </>
                     </Col>
               <Card.Body className="table-full-width table-responsive px-0">
                 <Table className="table-hover table-striped">
