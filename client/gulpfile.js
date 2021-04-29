@@ -14,13 +14,7 @@ gulp.task("licenses", async function () {
     )
     .pipe(gulp.dest("./", { overwrite: true }));
 
-  gulp
-    .src("build/index.html", { base: "./" })
-    .pipe(
-      gap.prependText()
-    )
-    .pipe(gulp.dest("./", { overwrite: true }));
-
+  
   gulp
     .src("build/static/css/*chunk.css", { base: "./" })
     .pipe(
