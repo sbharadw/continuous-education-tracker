@@ -117,6 +117,7 @@ function User() {
       .then(console.log(`sending updated object: ${JSON.stringify(formObject)}`))
       .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
     }
+    alert("Saved! Thank you for submitting your profile!")
   };
 
     //when the form is submitted, use the API.updateUser method to update the user data

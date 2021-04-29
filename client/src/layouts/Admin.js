@@ -11,7 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import sidebarImage from "assets/img/sidebar-3.jpg";
 
 function Admin() {
-  getrole()
+  
   const [image, setImage] = React.useState(sidebarImage);
   const [color, setColor] = React.useState("black");
   const [hasImage, setHasImage] = React.useState(true);
@@ -22,7 +22,7 @@ function Admin() {
 
   //User's auth0 info.
   console.log(user); 
-
+  getrole()
   const [myRole, setMyRole] = useState({})
   
  function getrole() { roleTokenCall.roleToken()
