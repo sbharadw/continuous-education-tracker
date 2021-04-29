@@ -101,3 +101,14 @@ export const AdminTable = ({ tableData, valueChangedCallback } ) => {
         </TablePanel>
     );
 }
+
+
+
+/*
+
+<Column width={100} dataField='itemCount' headerText="Quantity"></Column>
+                    <Column width={100} dataField='soldBy' headerText="Sold By"></Column>
+                    <Column width={100} dataField='country' headerText="Country"></Column> 
+
+
+*/
