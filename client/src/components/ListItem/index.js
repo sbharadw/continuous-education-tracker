@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container'
 
-function ListItem({name}){
-
+function ListItem({id, name, burnHours, totalHours, needed}){
     return (
-        <Container>
-                <th></th>
+        <>
+                <th>{ id}</th>
                 <th>{ name }</th>
-                <th>{ name }</th>
-                <th>{ name }</th>
-                <th>{ name }</th>
-        </Container>
+                <th>{ burnHours }</th>
+                <th>{ totalHours }</th>
+                <th>{ needed }</th>
+        </>
     );
 }
 

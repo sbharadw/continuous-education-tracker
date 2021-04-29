@@ -18,5 +18,7 @@ router
   .route("/unit/:id")
   .get(userController.findByUnit)
 
-
+router
+  .route("/eid/:id")
+  .put(userController.updateByUnit)
 module.exports = router;

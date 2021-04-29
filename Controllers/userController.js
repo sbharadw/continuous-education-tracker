@@ -39,6 +39,17 @@ findById: function(req, res) {
         .catch(err => res.status(422).json(err));
     },
 
+updateByUnit: function(req, res) {
+    console.log('PARAMS *************************')
+    console.log(req.params)
+    console.log(req.body)
+    
+    db.User
+        .updateMany({unit: req.params.id}, req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+
 findByUnit: function(req, res) {
     console.log('PARAMS *************************')
     console.log(req.params)

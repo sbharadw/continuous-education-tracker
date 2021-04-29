@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import API from "../utils/API";
 import ChartistGraph from "react-chartist";
+import { AdminTable } from '../components/AdminTable'
 // react-bootstrap components
 import {
   Badge,
@@ -35,6 +36,7 @@ const id = sub
           const allUsers = res.data
           console.log(allUsers)
           totalUserTotalHours(allUsers)
+          allNurses(allUsers)
           return function cleanup() {
             API.getUsers()
         }
@@ -44,12 +46,27 @@ const id = sub
     }, [])
 
 
-    //set initial state for formObject
+    //set initial state for piechart
   const [pieChart, setPieChart] = useState({
     totalhours: "",
     totalburnhours: "",
+    totalassignedhours: "",
   })
 
+
+//Excel ---- 
+
+
+const[NurseData, setNurseData] = new useState([]);
+
+//---------
+
+  function allNurses(allUsers){
+  console.log(allUsers)
+
+  setNurseData(allUsers)
+
+  }
 
   function tohours(item){
     return item.totalhours;
@@ -58,6 +75,11 @@ const id = sub
   function bhours(item){
       return item.totalburnhours;
       }
+  
+  function assignedhours(item){
+       return item.assignedhours
+
+  }
 
   function sum(prev, next){
       return prev + next;
@@ -68,16 +90,40 @@ function totalUserTotalHours(allUsers) {
 
 let total_totalhours = allUsers.map(tohours).reduce(sum);
 let total_totalburnhours = allUsers.map(bhours).reduce(sum);
+let total_assignedhours = allUsers.map(assignedhours).reduce(sum);
 
 setPieChart({
   totalhours: total_totalhours,
   totalburnhours: total_totalburnhours,
+  totalassignedhours: total_assignedhours,
   })
 
 }
 
+let other = pieChart.totalhours - pieChart.totalburnhours;
+let totalremaininghours = pieChart.totalassignedhours - pieChart.totalhours;
+
+
+
 console.log(`This is piechart info!!!!!!!######*******!!!!!!`)
 console.log(pieChart)
+
+
+
+//Excel ----------
+
+
+
+function NurseTableData() {
+  return NurseData;
+};
+
+function handleValueChanged(tableData) {
+  setNurseData(tableData.slice(0));
+}
+
+
+//-------------------
 
 
   return (
@@ -99,8 +145,8 @@ console.log(pieChart)
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["60%"],
-                      series: [60],
+                      labels: [`${pieChart.totalhours} hrs`],
+                      series: [pieChart.totalhours],
                     }}
                     type="Pie"
                     options={{
@@ -135,8 +181,8 @@ console.log(pieChart)
                 >
                   <ChartistGraph
                     data={{
-                      labels: ["80%", "20%"],
-                      series: [80, 20],
+                      labels: [`${pieChart.totalburnhours} hrs`, `${other} hrs`],
+                      series: [pieChart.totalburnhours, other],
                     }}
                     type="Pie"
                   />
@@ -163,8 +209,8 @@ console.log(pieChart)
                 >
                   <ChartistGraph
                     data={{
-                      labels: [`TH: ${pieChart.totalhours}`, `TBH: ${pieChart.totalburnhours}`],
-                      series: [pieChart.totalhours, pieChart.totalburnhours],
+                      labels: [`${pieChart.totalassignedhours} hrs`, `${totalremaininghours} hrs`],
+                      series: [pieChart.totalassignedhours, totalremaininghours],
                     }}
             
                     type="Pie"
@@ -196,7 +242,8 @@ console.log(pieChart)
               </Card.Header>
               <Card.Body>
                 <div className="ct-chart" id="chartActivity">
-                  <ChartistGraph
+              
+                <ChartistGraph
                     data={{
                       labels: [
                         "Jan",
@@ -265,6 +312,12 @@ console.log(pieChart)
                       ],
                     ]}
                   />
+                <br></br>
+                <br></br>
+                <br></br>
+                <AdminTable tableData={NurseTableData()} 
+                        valueChangedCallback={handleValueChanged}
+                        />
                 </div>
               </Card.Body>
               <Card.Footer>
@@ -284,3 +337,21 @@ console.log(pieChart)
 }
 
 export default Dashboard;
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
