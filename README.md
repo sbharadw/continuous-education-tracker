@@ -18,6 +18,7 @@ It comes with 6 filter colors for the sidebar (`black`, `azure`,`green`,`orange`
 | Dashboard | User Profile | Nurse List |Add Hours|
 | --- | --- | --- | --- | --- |
 ![Dashboard](./client/src/assets/img/screenshots/Dashboard.JPG)
+![Dashboard Excel](./client/src/assets/img/screenshots/Dashboard2.JPG)
 ![User Profile](./client/src/assets/img/screenshots/UserProfile2.jpg)
 ![Nurse List](./client/src/assets/img/screenshots/NurseList.JPG)
 ![Add Hours](./client/src/assets/img/screenshots/AddHours.JPG)
