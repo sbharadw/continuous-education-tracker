@@ -57,18 +57,18 @@ function Upgrade() {
         .then(console.log(`sending object: ${JSON.stringify(formObject)}`))
         .then(handleCleanInputs())
         .catch(err => console.log(`Error occurred when sending information to the database ************* ${err}`));
-      }
+    }
 
-       alert("Your course is being submitted!")
-      //in case we want to read data from database to update the cards call fillOutCards();
+    alert("Your course is being submitted!")
+    //in case we want to read data from database to update the cards call fillOutCards();
   };
 
   //Handles checkbox change
   function handleCheckboxChange(event) {
-    if(formObject.checked===false){
-    setFormObject({ ...formObject, burnHours: formObject.courseHours, checked: true });
-    console.log("updating burn hours " + formObject.burnHours);
-    }else {
+    if (formObject.checked === false) {
+      setFormObject({ ...formObject, burnHours: formObject.courseHours, checked: true });
+      console.log("updating burn hours " + formObject.burnHours);
+    } else {
       setFormObject({ ...formObject, burnHours: null, checked: false });
       console.log("removing burn hours when unclicked checkbox " + formObject.burnHours);
     }
@@ -88,36 +88,36 @@ function Upgrade() {
       burnHours: "",
       synopsis: "",
       subId: sub,
-      checked:false
+      checked: false
     });
   }
 
   // Read saved data from database table and update formObject with it to use for filling out the cards
-  function fillOutCards(){
+  function fillOutCards() {
     console.log("GET the course info from database with id => " + id);
-    
-    API.getCourses()
-    .then(res => {
-      console.log(res)
-      
-      var index = res.data.length - 1;
-      console.log("index is " + index);
-      
-      setFormObject({ 
-        courseName: res.data[index].courseName,
-        courseHours: res.data[index].courseHours,
-        burnHours: res.data[index].burnHours,
-        synopsis: res.data[index].synopsis,
-        subId: sub
-         })
 
-    })
-    .catch(err => console.log(err));
+    API.getCourses()
+      .then(res => {
+        console.log(res)
+
+        var index = res.data.length - 1;
+        console.log("index is " + index);
+
+        setFormObject({
+          courseName: res.data[index].courseName,
+          courseHours: res.data[index].courseHours,
+          burnHours: res.data[index].burnHours,
+          synopsis: res.data[index].synopsis,
+          subId: sub
+        })
+
+      })
+      .catch(err => console.log(err));
 
     console.log("form object for cards => " + JSON.stringify(formObject));
   }
 
- 
+
   //---------------------------------End Scripts ---------------------------------------------
 
 
@@ -151,7 +151,7 @@ function Upgrade() {
                         <label>Hours</label>
                         <Form.Control
                           placeholder="Hours"
-                          type="number"   min="0"
+                          type="number" min="0"
                           onChange={handleInputChange}
                           value={formObject.courseHours}
                           name="courseHours"
@@ -162,7 +162,7 @@ function Upgrade() {
                               // defaultValue=""
                               checked={formObject.checked}
                               type="checkbox"
-                             
+
                               onChange={handleCheckboxChange}
                             ></Form.Check.Input>
                             <span className="form-check-sign"></span>
@@ -311,9 +311,9 @@ function Upgrade() {
           </Col>
 
         </Row>
-        
+
       </Container>
-      
+
     </>
   );
 }
